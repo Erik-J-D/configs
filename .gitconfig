@@ -1,0 +1,7 @@
+[user]
+	email = erik@lyricalsecurity.com
+	name = Erik Derohanian
+[color]
+	ui = true
+[core]
+	editor = vim
