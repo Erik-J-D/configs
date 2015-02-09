@@ -76,6 +76,7 @@ alias la='ls -A'
 #alias l='ls -CF'
 alias xclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
+alias whatami='echo $TERM'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
