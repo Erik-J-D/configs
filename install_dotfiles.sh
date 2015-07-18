@@ -8,7 +8,7 @@
 # Variables
 
 dir=~/configs                           # dotfiles directory
-olddir=~/configs_old                   # old dotfiles backup directory
+olddir=~/configs_old                    # old dotfiles backup directory
 files="bashrc vimrc toprc gitconfig"    # list of files/folders to symlink in homedir
 
 ##########
