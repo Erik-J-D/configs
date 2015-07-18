@@ -70,13 +70,15 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
+# some more aliases
 alias ll='ls -l'
 alias la='ls -A'
 #alias l='ls -CF'
+
 alias xclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias whatami='echo $TERM'
+alias gpom='git push origin master'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
