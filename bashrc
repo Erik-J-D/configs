@@ -73,9 +73,10 @@ fi
 # some more aliases
 alias ll='ls -l'
 alias la='ls -A'
-#alias l='ls -CF'
 
-alias xclip='xclip -selection c'
+alias vims="vim -S ~/vim.session"
+
+alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias whatami='echo $TERM'
 alias gpom='git push origin master'
