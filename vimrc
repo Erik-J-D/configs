@@ -1,3 +1,6 @@
+" Run Pathogen stuff
+execute pathogen#infect() 
+
 syntax enable " syntax highlighting
 
 set t_Co=16
