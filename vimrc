@@ -27,10 +27,8 @@ highlight ColorColumn ctermbg=darkgrey
 
 autocmd FileType make       setlocal noexpandtab
 autocmd FileType golang     setlocal noexpandtab
-autocmd FileType html       setlocal tabstop=2
-autocmd FileType html       setlocal shiftwidth=2
-autocmd FileType javasript  setlocal tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=0 expandtab
 
 set number "line numbers
 set ruler
