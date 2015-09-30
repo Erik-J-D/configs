@@ -22,7 +22,15 @@ highlight SpecialKey ctermfg=1  " highlight actual tabs
 set list
 set listchars=tab:>>
 
-autocmd FileType make setlocal noexpandtab
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgrey
+
+autocmd FileType make       setlocal noexpandtab
+autocmd FileType golang     setlocal noexpandtab
+autocmd FileType html       setlocal tabstop=2
+autocmd FileType html       setlocal shiftwidth=2
+autocmd FileType javasript  setlocal tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2
 
 set number "line numbers
 set ruler
