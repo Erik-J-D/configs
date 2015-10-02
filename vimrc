@@ -1,6 +1,10 @@
 " Run Pathogen stuff
 execute pathogen#infect() 
 
+" set up ctrl-p binding
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 syntax enable " syntax highlighting
 
 set t_Co=16
