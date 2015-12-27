@@ -30,3 +30,8 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+# get pathogen and vim plugins
+mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp
