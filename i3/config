@@ -180,11 +180,16 @@ bindsym $mod+Pause mode "$mode_system"
 # network manager
 exec --no-startup-id nm-applet
 
+# float matlab plots
+for_window [class="(?i)matlab" title="^Fig"] floating enable
+for_window [class="(?i)matlab" title="^Classification"] floating enable
+
 # Auto exec applications
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
 exec --no-startup-id i3-msg 'workspace 3; exec terminator; workspace 1'
-exec --no-startup-id i3-msg 'workspace 4; exec SpiderOakONE; workspace 1'
+assign [class="SpiderOakONE"] 10
+exec SpiderOakONE
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
