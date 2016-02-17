@@ -109,6 +109,9 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym $mod+ctrl+Left workspace prev
+bindsym $mod+ctrl+Right workspace next
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -190,6 +193,8 @@ exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
 exec --no-startup-id i3-msg 'workspace 3; exec terminator; workspace 1'
 assign [class="SpiderOakONE"] 10
 exec SpiderOakONE
+
+exec --no-startup-id nitrogen --restore
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
