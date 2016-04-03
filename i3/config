@@ -157,6 +157,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# ctrl-alt-n to nautilus
+bindsym $mod+ctrl+n exec "nautilus"
+
 # ctrl-alt-k to keepass
 bindsym $mod+ctrl+k exec "keepass2"
 
