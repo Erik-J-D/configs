@@ -9,9 +9,7 @@
 
 dir=~/configs                           # dotfiles directory
 olddir=~/configs_old                    # old dotfiles backup directory
-files="bashrc vimrc toprc gitconfig bash_aliases i3 i3status.conf"    # list of files/folders to symlink in homedir
-
-##########
+files="bashrc bash_profile vimrc toprc gitconfig bash_aliases bash_environment bash_functions i3 i3status.conf"
 
 # create configs_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
