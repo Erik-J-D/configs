@@ -65,3 +65,5 @@ set foldlevel=1
 
 "remap jj to escape in insert mode
 inoremap jj <Esc>
+
+com! FormatJSON %!python -m json.tool
