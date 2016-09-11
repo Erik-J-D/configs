@@ -9,7 +9,7 @@
 
 dir=~/configs                           # dotfiles directory
 olddir=~/configs_old                    # old dotfiles backup directory
-files="bashrc bash_profile vimrc toprc gitconfig bash_aliases bash_environment bash_functions i3 i3status.conf"
+files="bash_aliases bash_environment bash_functions bash_profile bashrc gitconfig i3 i3status.conf screenrc toprc vimrc" 
 
 # create configs_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
