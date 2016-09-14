@@ -20,3 +20,6 @@ fi
 if [ -f ~/.bash_environment ]; then
     . ~/.bash_environment
 fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

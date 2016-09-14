@@ -22,9 +22,9 @@ set wrapscan
 set tabstop=4    " set tab to 4 spaces
 set shiftwidth=4
 set expandtab
-highlight SpecialKey ctermfg=1  " highlight actual tabs
+highlight SpecialKey ctermfg=2  " highlight actual tabs
 set list
-set listchars=tab:>>
+set listchars=tab:▸·,trail:·
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=darkgrey
