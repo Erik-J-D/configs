@@ -1,4 +1,4 @@
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 
 gaps inner 10
 gaps outer 0
@@ -20,11 +20,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:Droid Sans Mono, DejaVu Sans Mono, monospace 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -207,6 +203,8 @@ bindsym $mod+Shift+p mode "$mode_monitor"
 
 # network manager
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id nitrogen --restore
 
 # float plots
 for_window [class="(?i)matlab" title="^Fig"] floating enable
@@ -218,16 +216,28 @@ for_window [class="(?i)xmessage" title="^xmessage"] floating enable
 # Auto exec applications
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
-exec --no-startup-id i3-msg 'workspace 3; exec slack; workspace 1'
+assign [class="slack"] 3
+exec slack
 exec --no-startup-id i3-msg 'workspace 4; exec terminator; workspace 1'
 assign [class="SpiderOakONE"] 10
 exec SpiderOakONE
-exec --no-startup-id blueman-applet
 
-exec --no-startup-id nitrogen --restore
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status -t
+    status_command i3status -t
+    height 20
+    colors {
+        background #16171E
+    }
 }
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #5DE35D
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
