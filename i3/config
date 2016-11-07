@@ -1,7 +1,7 @@
 set $mod Mod1
 
-set $laptop_screen eDP-1
-set $projector HDMI-1
+set $laptop_screen eDP1
+set $projector HDMI1
 
 smart_borders on
 for_window [class="^.*"] border pixel 2
@@ -198,7 +198,7 @@ assign [class="SpiderOakONE"] 10
 exec SpiderOakONE
 
 # make mouse settings sane
-exec --nostartup-id xinput --set-prop "Primax Kensington Eagle Trackball" "Device Accel Constant Deceleration" 2.5
+exec --nostartup-id sh -c 'xinput --set-prop "Primax Kensington Eagle Trackball" "Device Accel Constant Deceleration" 2.5'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

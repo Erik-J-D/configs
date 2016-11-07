@@ -33,6 +33,7 @@ autocmd FileType make       setlocal noexpandtab
 autocmd FileType golang     setlocal noexpandtab
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=0 expandtab
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 
 set number "line numbers
 set ruler
