@@ -42,6 +42,6 @@ if ! shopt -oq posix; then
 fi
 
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOROOT/bin:/opt/Xilinx/Vivado/2016.3/bin
 export GOPATH=/home/erik/.go
 

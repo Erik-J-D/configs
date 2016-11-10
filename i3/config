@@ -1,7 +1,7 @@
 set $mod Mod1
 
-set $laptop_screen eDP1
-set $projector HDMI1
+set $laptop_screen eDP-1
+set $projector HDMI-1
 
 smart_borders on
 for_window [class="^.*"] border pixel 2
