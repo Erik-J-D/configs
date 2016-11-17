@@ -180,6 +180,7 @@ bindsym $mod+Shift+p mode "$mode_monitor"
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id indicator-sound-switcher
 
 # float plots
 for_window [class="(?i)matlab" title="^Fig"] floating enable
