@@ -4,6 +4,7 @@ set $laptop_screen eDP-1
 set $projector HDMI-1
 
 smart_borders on
+# Comment out following line to get window titlebars
 for_window [class="^.*"] border pixel 2
 
 gaps inner 10
@@ -176,7 +177,8 @@ mode "$mode_monitor" {
 }
 bindsym $mod+Shift+p mode "$mode_monitor"
 
-# network manager
+exec --no-startup-id sh -c "xset s off; xset -dpms; xset s noblank"
+
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id nitrogen --restore
@@ -192,8 +194,7 @@ for_window [class="(?i)xmessage" title="^xmessage"] floating enable
 # Auto exec applications
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
-assign [class="slack"] 3
-exec slack
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/lib/slack/slack; workspace 1'
 exec --no-startup-id i3-msg 'workspace 4; exec terminator; workspace 1'
 assign [class="SpiderOakONE"] 10
 exec SpiderOakONE
