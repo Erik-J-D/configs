@@ -1,7 +1,7 @@
 set $mod Mod1
 
-set $laptop_screen eDP-1
-set $projector HDMI-1
+set $laptop_screen eDP-1-1
+set $projector HDMI-1-1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -187,7 +187,8 @@ for_window [class="(?i)xmessage" title="^xmessage"] floating enable
 # Auto exec applications
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
-exec --no-startup-id i3-msg 'workspace 3; exec /usr/lib/slack/slack; workspace 1'
+assign [class="Slack"] 3
+exec slack
 exec --no-startup-id i3-msg 'workspace 4; exec terminator; workspace 1'
 assign [class="SpiderOakONE"] 10
 exec SpiderOakONE
