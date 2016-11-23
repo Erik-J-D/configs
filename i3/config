@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 
 set $laptop_screen eDP-1-1
 set $projector HDMI-1-1
@@ -195,6 +195,8 @@ exec SpiderOakONE
 
 # make mouse settings sane
 exec --nostartup-id sh -c 'xinput --set-prop "Primax Kensington Eagle Trackball" "Device Accel Constant Deceleration" 2.5'
+
+exec --nostartup-id sh -c "xmodmap ~/.keyswapper"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
