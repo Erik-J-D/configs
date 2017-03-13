@@ -191,7 +191,6 @@ for_window [class="(?i)tk" title="^Fig"] floating enable
 for_window [class="(?i)xmessage" title="^xmessage"] floating enable
 
 # Auto exec applications
-exec --nostartup-id sh -c 'redshift -l 43.5:-79.2'
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
 assign [class="Slack"] 3
