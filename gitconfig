@@ -1,6 +1,7 @@
 [user]
 	email = erik@erik-j.de
 	name = Erik Derohanian
+	signingkey = 2452D4AE
 [color]
 	ui = true
 [core]

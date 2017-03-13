@@ -5,6 +5,8 @@ execute pathogen#infect()
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
+
 syntax enable " syntax highlighting
 
 set t_Co=16
@@ -68,3 +70,4 @@ set foldlevel=1
 inoremap jj <Esc>
 
 com! FormatJSON %!python -m json.tool
+com! FormatXML %!xmllint --format
