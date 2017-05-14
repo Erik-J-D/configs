@@ -219,7 +219,7 @@ bar {
   }
 }
 
-client.focused          #859900 #859900 #ffffff #2e9ef4
-client.focused_inactive #268bd2 #268bd2 #ffffff #484e50
-client.unfocused        #93a1a1 #93a1a1 #ffffff #292d2e
-client.urgent           #d33682 #d33682 #ffffff #dc322f
+client.focused          #859900 #859900 #ffffff #859900
+client.focused_inactive #268bd2 #268bd2 #ffffff #268bd2
+client.unfocused        #93a1a1 #93a1a1 #ffffff #93a1a1
+client.urgent           #d33682 #d33682 #ffffff #d33682

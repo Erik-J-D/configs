@@ -22,3 +22,5 @@ alias whatami='echo $TERM'
 alias gpom='git push origin master'
 alias gd='git diff'
 alias gits='git status'
+
+alias pserv='python3 -m http.server'
