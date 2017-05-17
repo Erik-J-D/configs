@@ -176,7 +176,7 @@ mode "$mode_monitor" {
 }
 bindsym $mod+Shift+p mode "$mode_monitor"
 
-exec --no-startup-id sh -c "xset s off; xset -dpms; xset s noblank; xmodmap ~/.keyswapper"
+exec --no-startup-id sh -c "xset s 900; xmodmap ~/.keyswapper"
 
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
