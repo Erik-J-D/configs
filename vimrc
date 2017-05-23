@@ -8,6 +8,8 @@ let g:ctrlp_cmd = 'CtrlP'
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
 syntax enable " syntax highlighting
+set autoindent
+set cindent
 
 set t_Co=16
 set background=dark
@@ -22,6 +24,7 @@ map <F2> <esc>:noh<cr><esc>
 set wrapscan
 
 set tabstop=4    " set tab to 4 spaces
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 highlight SpecialKey ctermfg=2  " highlight actual tabs

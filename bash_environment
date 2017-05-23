@@ -42,7 +42,7 @@ if ! shopt -oq posix; then
 fi
 
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin:$HOME/.rbenv/bin:/home/erik/.pyenv/bin:/opt/elasticdump/node_modules/elasticdump/.bin
+export PATH=$PATH:$GOROOT/bin:$HOME/.rbenv/bin:/home/erik/.pyenv/bin:/opt/elasticdump/node_modules/.bin
 export GOPATH=/home/erik/.go
 
 eval "$(pyenv init -)"
