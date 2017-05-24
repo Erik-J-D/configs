@@ -1,5 +1,5 @@
 " Run Pathogen stuff
-execute pathogen#infect() 
+execute pathogen#infect()
 
 " set up ctrl-p binding
 let g:ctrlp_map = '<c-p>'
@@ -9,7 +9,6 @@ command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
 syntax enable " syntax highlighting
 set autoindent
-set cindent
 
 set t_Co=16
 set background=dark
@@ -74,3 +73,11 @@ inoremap jj <Esc>
 
 com! FormatJSON %!python -m json.tool
 com! FormatXML %!xmllint --format
+
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
