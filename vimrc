@@ -14,11 +14,14 @@ set t_Co=16
 set background=dark
 colorscheme default
 
-set smartcase   " search intelligently
-set smartindent
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 
+set smartcase   " search intelligently
 set hlsearch  " highlight searches, and search incrementaly
 set incsearch
+
 map <F2> <esc>:noh<cr><esc>
 set wrapscan
 
