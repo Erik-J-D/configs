@@ -9,4 +9,6 @@
 [push]
 	default = simple
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
+[alias]
+    all = "!f() { ls | xargs -I{} git -C {} $1; }; f"

@@ -8,7 +8,7 @@ let g:ctrlp_cmd = 'CtrlP'
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
 syntax enable " syntax highlighting
-set autoindent
+filetype indent plugin on
 
 set t_Co=16
 set background=dark
