@@ -20,3 +20,8 @@ fi
 if [ -f ~/.bash_environment ]; then
     . ~/.bash_environment
 fi
+
+# Per computer extra settings
+if [ -f ~/.bash_$HOSTNAME ]; then
+    . ~/.bash_$HOSTNAME
+fi
