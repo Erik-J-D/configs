@@ -22,7 +22,7 @@ bindsym $mod+d exec dmenu_run
 # bind volume buttons
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 4%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 4%- unmute
-bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle 
+bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
 
 # Spotify controls
 bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
@@ -135,9 +135,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# ctrl-alt-n to nautilus
-# gsettings set org.gnome.desktop.background show-desktop-icons false
-bindsym $mod+ctrl+n exec "nautilus"
+# ctrl-alt-n to nemo
+bindsym $mod+ctrl+n exec "nemo --no-desktop"
 
 # ctrl-alt-k to keepass
 bindsym $mod+ctrl+k exec "keepass2"
