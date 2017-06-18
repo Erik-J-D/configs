@@ -179,7 +179,7 @@ exec --no-startup-id sh -c "xset s 900; xmodmap ~/.keyswapper"
 
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
 
 # float plots
 for_window [class="(?i)matlab" title="^Fig"] floating enable
