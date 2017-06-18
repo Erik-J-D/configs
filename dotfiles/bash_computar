@@ -1,0 +1,4 @@
+export PATH=$PATH:$HOME/.rbenv/bin:/home/erik/.pyenv/bin:/opt/elasticdump/node_modules/.bin
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

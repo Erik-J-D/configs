@@ -1,0 +1,2 @@
+# brightness control for laptop
+function brightness() { echo -n "$@" > /sys/class/backlight/intel_backlight/brightness; }
