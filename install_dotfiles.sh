@@ -5,25 +5,17 @@
   # dotfiles in the home directory #
   ##################################
 
-# Variables
-
-dir=~/configs                           # dotfiles directory
-olddir=~/configs_old                    # old dotfiles backup directory
-files="bash_aliases bash_environment bash_functions bash_profile bashrc gitconfig i3 i3status.conf screenrc toprc vimrc keyswapper"
+dir=~/configs/dotfiles     # dotfiles directory
+olddir=~/configs_old       # old dotfiles backup directory
 
 # create configs_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
 echo "...done"
 
-# change to the dotfiles directory
-echo "Changing to the $dir directory"
 cd $dir
-echo "...done"
-
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
+for file in *; do
     mv ~/.$file $olddir/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
