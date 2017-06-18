@@ -12,7 +12,14 @@ function color_my_prompt {
 }
 color_my_prompt
 
+# cd then ls
 function cl() { cd "$@" && ls; }
 
+# brightness control for laptop
 function brightness() { echo -n "$@" > /sys/class/backlight/intel_backlight/brightness; }
 
+# remove .pyc, .pyo, pycache
+function pyclean () {
+    find . -type f -name "*.py[co]" -delete
+    find . -type d -name "__pycache__" -delete
+}

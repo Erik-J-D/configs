@@ -1,5 +1,5 @@
 " Run Pathogen stuff
-execute pathogen#infect() 
+execute pathogen#infect()
 
 " set up ctrl-p binding
 let g:ctrlp_map = '<c-p>'
@@ -8,20 +8,25 @@ let g:ctrlp_cmd = 'CtrlP'
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
 syntax enable " syntax highlighting
+filetype indent plugin on
 
 set t_Co=16
 set background=dark
 colorscheme default
 
-set smartcase   " search intelligently
-set smartindent
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 
+set smartcase   " search intelligently
 set hlsearch  " highlight searches, and search incrementaly
 set incsearch
+
 map <F2> <esc>:noh<cr><esc>
 set wrapscan
 
 set tabstop=4    " set tab to 4 spaces
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 highlight SpecialKey ctermfg=2  " highlight actual tabs
@@ -71,3 +76,11 @@ inoremap jj <Esc>
 
 com! FormatJSON %!python -m json.tool
 com! FormatXML %!xmllint --format
+
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()

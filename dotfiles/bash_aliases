@@ -24,3 +24,11 @@ alias gd='git diff'
 alias gits='git status'
 
 alias pserv='python3 -m http.server'
+
+# vagrant shit
+alias vssh="vagrant ssh"
+alias vp="vagrant provision"
+alias vc="vagrant destroy -f && vagrant up --provision"
+alias vd="vagrant destroy -f"
+alias vgs="vagrang global-status"
+alias vh="vagrant halt"
