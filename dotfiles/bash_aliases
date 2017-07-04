@@ -32,3 +32,5 @@ alias vc="vagrant destroy -f && vagrant up --provision"
 alias vd="vagrant destroy -f"
 alias vgs="vagrang global-status"
 alias vh="vagrant halt"
+
+alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'
