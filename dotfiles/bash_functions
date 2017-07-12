@@ -15,6 +15,10 @@ color_my_prompt
 # cd then ls
 function cl() { cd "$@" && ls; }
 
+function viewmd() {
+    pandoc "$*" | lynx -stdin
+}
+
 # remove .pyc, .pyo, pycache
 function pyclean () {
     find . -type f -name "*.py[co]" -delete

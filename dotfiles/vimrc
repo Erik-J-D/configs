@@ -12,7 +12,7 @@ filetype indent plugin on
 
 set t_Co=256
 set background=dark
-colorscheme slate
+colorscheme delek
 
 set cindent
 set cinkeys-=0#
