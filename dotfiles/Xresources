@@ -1,28 +1,37 @@
-! Tango color scheme
-*background:       #0d1926
-*foreground:       #d9e6f2
-*cursorColor:      #8ae234
+! DOOM color scheme
 *colorUL:          #8ae234
 *underlineColor:   #92659a
-*color0:           #2e3436
-*color8:           #888A85
-*color1:           #cc0000
-*color9:           #ef2929
-*color2:           #4e9a06
-*color10:          #8ae234
-*color3:           #edd400
-*color11:          #fce94f
-*color4:           #3465a4
-*color12:          #729fcf
-*color5:           #92659a
-*color13:          #c19fbe
-*color6:           #07c7ca
-*color14:          #63e9e9
-*color7:           #d3d7cf
-*color15:          #eeeeec
+
+*.color0: #1E2127
+*.color8: #5C6370
+*.color1: #CC626A
+*.color9: #E06C75
+*.color2: #98C379
+*.color10: #A7D685
+*.color3:  #da8548
+*.color11: #ECBE7B
+*.color4: #3E86B8
+*.color12: #51afef
+*.color5: #a9a1e1
+*.color13: #C678DD
+*.color6: #4db5bd
+*.color14: #56B6C2
+*.color7: #ABB2BF
+*.color15: #FFFFFF
+*color17: #000F1F
+*color18: #210000
+*color19: #171600
+
+*foreground: #ABB2BF
+*cursorColor: #5C6370
+*background: #282c34
 
 URxvt.font: xft:Roboto Mono:size=10
 URxvt.cursorBlink:  true
+
+URxvt*scrollColor:        #d1d4e0
+URxvt*highlightColor:     #252936
+URxvt*highlightTextColor: #C0C5CE
 
 URxvt.saveLines: 10000
 URxvt.scrollBar: false
@@ -35,3 +44,8 @@ URxvt.iso14755: false
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.rgba: rgb
