@@ -21,6 +21,9 @@ for file in *; do
     ln -s $dir/$file ~/.$file
 done
 
+# Do Xresource loading
+xrdb ~/.Xresources
+
 # get pathogen and vim plugins
 mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 URLS="
