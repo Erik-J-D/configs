@@ -30,7 +30,7 @@ URxvt.font: xft:Roboto Mono:size=10
 URxvt.cursorBlink:  true
 
 URxvt*scrollColor:        #d1d4e0
-URxvt*highlightColor:     #252936
+URxvt*highlightColor:     #452936
 URxvt*highlightTextColor: #C0C5CE
 
 URxvt.saveLines: 10000
