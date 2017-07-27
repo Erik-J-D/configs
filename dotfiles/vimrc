@@ -35,7 +35,7 @@ set list
 set listchars=tab:▸·,trail:·
 
 set colorcolumn=80
-highlight ColorColumn ctermbg=darkgrey
+highlight ColorColumn ctermbg=black
 
 autocmd FileType make       setlocal noexpandtab
 autocmd FileType golang     setlocal noexpandtab
