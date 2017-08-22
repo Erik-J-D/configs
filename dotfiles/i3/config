@@ -3,6 +3,8 @@ set $mod Mod4
 set $laptop_screen HDMI1
 set $projector HDMI2
 
+new_window pixel 2
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Droid Sans Mono, DejaVu Sans Mono, monospace 10
@@ -189,8 +191,6 @@ for_window [class="(?i)tk" title="^Fig"] floating enable
 
 for_window [class="(?i)xmessage" title="^xmessage"] floating enable
 
-for_window [class="Firefox"] border pixel
-
 # Auto exec applications
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
@@ -202,7 +202,6 @@ exec SpiderOakONE
 
 # make mouse settings sane
 exec --nostartup-id sh -c 'xinput --set-prop "Primax Kensington Eagle Trackball" "Device Accel Constant Deceleration" 2.5'
-
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
