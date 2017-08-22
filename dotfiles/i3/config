@@ -189,6 +189,8 @@ for_window [class="(?i)tk" title="^Fig"] floating enable
 
 for_window [class="(?i)xmessage" title="^xmessage"] floating enable
 
+for_window [class="Firefox"] border pixel
+
 # Auto exec applications
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'

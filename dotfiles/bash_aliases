@@ -19,6 +19,7 @@ alias getclip='xclip -selection clipboard -o'
 
 alias whatami='echo $TERM'
 
+# git
 alias gpom='git push origin master'
 alias gd='git diff'
 alias gits='git status'
@@ -34,3 +35,6 @@ alias vgs="vagrang global-status"
 alias vh="vagrant halt"
 
 alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'
+
+# Docker - Remove stopped containers and untagged images
+alias dockerclean="docker rm \$(docker ps -a -q); docker rmi \$(docker images | grep \"^<none>\" | awk \"{print $3}\")"
