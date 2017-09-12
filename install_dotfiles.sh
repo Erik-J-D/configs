@@ -29,6 +29,7 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vi
 URLS="
 https://github.com/fatih/vim-go.git
 https://github.com/ctrlpvim/ctrlp.vim
+https://github.com/scrooloose/nerdcommenter
 "
 for URL in $URLS; do
     IFS=/; read -a URLDIRTMP <<<"$URL"; IFS=.; read -a URLDIR <<< "${URLDIRTMP[-1]}"; unset IFS

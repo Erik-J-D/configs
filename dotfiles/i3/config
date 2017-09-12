@@ -22,6 +22,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 bindsym XF86Search exec --no-startup-id j4-dmenu-desktop
+bindsym Menu exec --no-startup-id j4-dmenu-desktop
 
 # bind volume buttons
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 4%+ unmute

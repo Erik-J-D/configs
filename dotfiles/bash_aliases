@@ -8,7 +8,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias ll='ls -l'
+alias ll='ls -lh'
 alias la='ls -A'
 
 # Open multiple files as tabs
