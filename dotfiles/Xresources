@@ -18,9 +18,6 @@
 *.color14: #56B6C2
 *.color7: #ABB2BF
 *.color15: #FFFFFF
-*color17: #000F1F
-*color18: #210000
-*color19: #171600
 
 *foreground: #ABB2BF
 *cursorColor: #5C6370
@@ -36,8 +33,6 @@ URxvt*highlightTextColor: #C0C5CE
 URxvt.saveLines: 10000
 URxvt.scrollBar: false
 URxvt.secondaryScroll: true
-
-URxvt.perl-ext-common: default,tabbed
 
 URxvt.iso14755_52: false
 URxvt.iso14755: false

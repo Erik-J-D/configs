@@ -14,3 +14,8 @@
     bclean = "!f() { git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d ; }; f"
     all = "!f() { ls | xargs -I{} git -C {} $1; }; f"
     lastcommit = show --name-status HEAD
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

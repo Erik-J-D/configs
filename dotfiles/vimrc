@@ -85,4 +85,9 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
+
+"vim-flake8
+autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+autocmd BufWritePost *.py call Flake8()
+
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
