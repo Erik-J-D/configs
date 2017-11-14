@@ -5,6 +5,8 @@ execute pathogen#infect()
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+let g:NERDDefaultAlign = 'left'
+
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
 syntax enable " syntax highlighting
@@ -86,8 +88,15 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
 "vim-flake8
-autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+map <F3> :call Flake8()<CR>
 autocmd BufWritePost *.py call Flake8()
 
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"Make quickfix window scal with amount of stuff, max 10 lines
+au FileType qf call AdjustWindowHeight(3, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
+
