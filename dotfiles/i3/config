@@ -240,10 +240,9 @@ bar {
     }
 }
 
-
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $green $green $darkgray $green $darkgray
+client.focused          $yellow $yellow $darkgray $green $darkgray
 client.focused_inactive $darkgray $darkgray $yellow $darkgray $darkgray
 client.unfocused        $darkgray $darkgray $yellow $darkgray $darkgray
 client.urgent           $red $red $white $red $red
