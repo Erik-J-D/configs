@@ -230,17 +230,17 @@ bar {
         background $bg
         # text color used for blocks that do not have a color specified.
         statusline $yellow
-        #                    border    backgr.   text
-        focused_workspace    $aqua     $aqua     $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red      $red      $bg
+        #                    border     backgr.    text
+        focused_workspace    $yellow    $yellow    $darkgray
+        inactive_workspace   $bg        $bg        $yellow
+        active_workspace     $darkgray  $darkgray  $yellow
+        urgent_workspace     $red       $red       $bg
     }
 }
 
 # green gruvbox
-# class                 border    backgr    text      indicator  child_border
-client.focused          $yellow   $yellow   $darkgray $yellow    $darkgray
-client.focused_inactive $darkgray $darkgray $yellow   $darkgray  $darkgray
-client.unfocused        $darkgray $darkgray $yellow   $darkgray  $darkgray
-client.urgent           $red      $red      $white    $red       $red
+# class                 border     backgr     text       indicator  child_border
+client.focused          $yellow    $yellow    $darkgray  $yellow    $darkgray
+client.focused_inactive $darkgray  $darkgray  $yellow    $darkgray  $darkgray
+client.unfocused        $darkgray  $darkgray  $yellow    $darkgray  $darkgray
+client.urgent           $red       $red       $white     $red       $red
