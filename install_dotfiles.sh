@@ -31,6 +31,7 @@ https://github.com/fatih/vim-go.git
 https://github.com/ctrlpvim/ctrlp.vim
 https://github.com/scrooloose/nerdcommenter
 https://github.com/nvie/vim-flake8.git
+https://github.com/morhetz/gruvbox.git
 "
 for URL in $URLS; do
     IFS=/; read -a URLDIRTMP <<<"$URL"; IFS=.; read -a URLDIR <<< "${URLDIRTMP[-1]}"; unset IFS
