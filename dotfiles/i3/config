@@ -5,7 +5,7 @@ set $projector HDMI2
 
 new_window pixel 2
 smart_borders on
-gaps inner 32
+gaps inner 16
 gaps outer 0
 
 # Font for window titles. Will also be used by the bar unless a different font
