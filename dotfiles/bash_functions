@@ -17,6 +17,7 @@ function cl() { cd "$@" && ls; }
 
 function viewmd() {
     pandoc "$*" | lynx -stdin
+    # grip "$*"
 }
 
 # remove .pyc, .pyo, pycache

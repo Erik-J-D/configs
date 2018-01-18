@@ -16,6 +16,11 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
+# bruise
+if [ -f ~/.bruise ]; then
+    . ~/.bruise
+fi
+
 # Environment definition.
 if [ -f ~/.bash_environment ]; then
     . ~/.bash_environment

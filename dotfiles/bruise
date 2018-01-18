@@ -1,0 +1,156 @@
+#!/usr/bin/env bash
+
+# tabstop: 4
+
+_VENV_BASE=$HOME/.venvs
+
+## get the name of the branch, within the following revision control systems
+function __fetch_repo_details() {
+
+    if [ -d ".git" ]; then
+        BRANCHNAME=`git rev-parse --abbrev-ref HEAD`
+    elif [ -d ".hg" ]; then
+        BRANCHNAME=`hg branch`
+    elif [ -d ".bzr" ]; then
+        BRANCHNAME=`cat .bzr/branch/branch.conf|awk -F/ '{print $(NF-1)}'`
+    fi
+
+    if [ -z $BRANCHNAME ]; then
+        return
+    else
+        REPONAME=`basename "$PWD"`
+    fi
+
+    # figure out our virtual env type
+    if [ -f requirements.txt ]; then
+        VENV_TYPE="python"
+        _VENV_ROOT=$_VENV_BASE/python
+    fi
+
+    if [ ! -d $_VENV_ROOT ]; then
+        mkdir -p $_VENV_ROOT
+    fi
+
+    # pyenv users get an environment prefixed with python version
+    if [ -f .python-version ]; then
+        PYTHON_VERSION=`cat .python-version`
+        VENV_NAME=$PYTHON_VERSION.$REPONAME.$BRANCHNAME
+    else
+        VENV_NAME=$REPONAME.$BRANCHNAME
+    fi
+    VENV_PATH=$_VENV_ROOT/$VENV_NAME
+
+}
+
+# create the pythonbrew venv combination
+# if there's a requirements.txt we'll pip that puppy
+function bruisemake() {
+
+    if [ -z $VENV_TYPE ]; then
+        echo "You are not in a repository root"
+        return 1
+    fi
+
+    if [ $VENV_TYPE == "python" ]; then
+        if [ ! -z $1 ]; then
+            VENV_PATH=$_VENV_BASE/python/$1
+        fi
+
+        if [ ! -d $VENV_PATH ]; then
+            virtualenv --no-site-packages $VENV_PATH
+        fi
+        source $VENV_PATH/bin/activate
+        pip install -r requirements.txt
+    fi
+
+}
+
+function __bruise() {
+
+    # pyenv support or not ;)
+    if [ -z $PYTHON_VERSION ]; then
+        VENV_PREFIX="${PYTHON_VERSION}"
+    else
+        VENV_PREFIX="${PYTHON_VERSION}."
+    fi
+
+    # if for some reason we're testing in a local venv, it wins
+    if [ -d `pwd`/venv ]; then
+       BRUISE_DIR=`pwd`/venv
+    else
+       bruisebase="${_VENV_ROOT}/${VENV_PREFIX}${REPONAME}"
+       if [ -d ${bruisebase}.${BRANCHNAME} ]; then
+         BRUISE_DIR=${bruisebase}.${BRANCHNAME}
+       elif [ -d ${bruisebase}.master ]; then
+         BRUISE_DIR=${bruisebase}.master
+       elif [ -d ${bruisebase} ]; then
+         BRUISE_DIR=${bruisebase}
+       fi
+    fi
+
+    if [ -f .python-version ]; then
+      pyenv versions|grep `cat .python-version`
+      if [ $? -ne 0 ]; then
+          echo "Looks like you need pyenv to install your version, I'll go do that now."
+          pyenv install `cat .python-version`
+          pyenv rehash
+          pip install virtualenv
+          cd .
+      fi
+    fi
+
+    if [ -z $BRUISE_DIR ]; then
+        echo "No environment exists, try running bruisemake"
+        return 1
+    fi
+
+    if [ $VENV_TYPE == "python" ]; then
+        echo "Environment loaded from ${BRUISE_DIR}"
+        source $BRUISE_DIR/bin/activate
+    fi
+
+    # todo, compare modified times on requirements.txt and the $VENV_PATH
+    if [ requirements.txt -nt $BRUISE_DIR ]; then
+        pip install -r requirements.txt
+    fi
+}
+
+function bruiselist() {
+    for i in `ls $_VENV_BASE`; do
+        ls $_VENV_BASE/$i
+    done
+}
+
+function bruiseuse() {
+    if [ -z $1 ]; then
+      __bruise
+    else
+        source $_VENV_BASE/python/$1/bin/activate
+    fi
+}
+
+function bruisedelete() {
+
+    if [ -z $1 ]; then
+        echo "bruisedelete bruise_to_delete"
+        return 1
+    fi
+
+    for i in `ls $_VENV_BASE`; do
+        envs=`ls $_VENV_BASE/$i`
+        for e in $envs; do
+            if [ "X$e" == "X$1" ]; then
+                rm -rf $_VENV_BASE/$i/$e
+            fi
+        done
+    done
+
+}
+
+cd() {
+    builtin cd "$@"
+    __fetch_repo_details
+    if [ ! -z $VENV_TYPE ]; then
+        __bruise
+    fi
+}
