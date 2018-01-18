@@ -7,38 +7,30 @@ _VENV_BASE=$HOME/.venvs
 ## get the name of the branch, within the following revision control systems
 function __fetch_repo_details() {
 
-    if [ -d ".git" ]; then
-        BRANCHNAME=`git rev-parse --abbrev-ref HEAD`
-    elif [ -d ".hg" ]; then
-        BRANCHNAME=`hg branch`
-    elif [ -d ".bzr" ]; then
-        BRANCHNAME=`cat .bzr/branch/branch.conf|awk -F/ '{print $(NF-1)}'`
-    fi
-
+    BRANCHNAME=`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\\\\\1\ /`
     if [ -z $BRANCHNAME ]; then
+        unset VENV_NAME
+        unset VENV_PATH
+        unset VENV_PREFIX
+        unset REPONAME
         return
     else
-        REPONAME=`basename "$PWD"`
+        __TOPLEVEL=`git rev-parse --show-toplevel`
+        REPONAME=`basename "$__TOPLEVEL"`
     fi
 
-    # figure out our virtual env type
-    if [ -f requirements.txt ]; then
-        VENV_TYPE="python"
-        _VENV_ROOT=$_VENV_BASE/python
-    fi
-
-    if [ ! -d $_VENV_ROOT ]; then
-        mkdir -p $_VENV_ROOT
+    if [ ! -d $_VENV_BASE ]; then
+        mkdir -p $_VENV_BASE
     fi
 
     # pyenv users get an environment prefixed with python version
-    if [ -f .python-version ]; then
-        PYTHON_VERSION=`cat .python-version`
+    if [ -f $__TOPLEVEL/.python-version ]; then
+        PYTHON_VERSION=`cat $__TOPLEVEL/.python-version`
         VENV_NAME=$PYTHON_VERSION.$REPONAME.$BRANCHNAME
     else
         VENV_NAME=$REPONAME.$BRANCHNAME
     fi
-    VENV_PATH=$_VENV_ROOT/$VENV_NAME
+    VENV_PATH=$_VENV_BASE/$VENV_NAME
 
 }
 
@@ -46,22 +38,15 @@ function __fetch_repo_details() {
 # if there's a requirements.txt we'll pip that puppy
 function bruisemake() {
 
-    if [ -z $VENV_TYPE ]; then
-        echo "You are not in a repository root"
-        return 1
+    if [ ! -z $1 ]; then
+        VENV_PATH=$_VENV_BASE/$1
     fi
 
-    if [ $VENV_TYPE == "python" ]; then
-        if [ ! -z $1 ]; then
-            VENV_PATH=$_VENV_BASE/python/$1
-        fi
-
-        if [ ! -d $VENV_PATH ]; then
-            virtualenv --no-site-packages $VENV_PATH
-        fi
-        source $VENV_PATH/bin/activate
-        pip install -r requirements.txt
+    if [ ! -d $VENV_PATH ]; then
+        virtualenv --no-site-packages $VENV_PATH
     fi
+    source $VENV_PATH/bin/activate
+    pip install -r $__TOPLEVEL/requirements.txt
 
 }
 
@@ -78,7 +63,7 @@ function __bruise() {
     if [ -d `pwd`/venv ]; then
        BRUISE_DIR=`pwd`/venv
     else
-       bruisebase="${_VENV_ROOT}/${VENV_PREFIX}${REPONAME}"
+       bruisebase="${_VENV_BASE}/${VENV_PREFIX}${REPONAME}"
        if [ -d ${bruisebase}.${BRANCHNAME} ]; then
          BRUISE_DIR=${bruisebase}.${BRANCHNAME}
        elif [ -d ${bruisebase}.master ]; then
@@ -88,11 +73,11 @@ function __bruise() {
        fi
     fi
 
-    if [ -f .python-version ]; then
-      pyenv versions|grep `cat .python-version`
+    if [ -f $__TOPLEVEL/.python-version ]; then
+      pyenv versions|grep `cat $__TOPLEVEL/.python-version`
       if [ $? -ne 0 ]; then
           echo "Looks like you need pyenv to install your version, I'll go do that now."
-          pyenv install `cat .python-version`
+          pyenv install `cat $__TOPLEVEL/.python-version`
           pyenv rehash
           pip install virtualenv
           cd .
@@ -104,28 +89,24 @@ function __bruise() {
         return 1
     fi
 
-    if [ $VENV_TYPE == "python" ]; then
-        echo "Environment loaded from ${BRUISE_DIR}"
-        source $BRUISE_DIR/bin/activate
-    fi
+    echo "Environment loaded from ${BRUISE_DIR}"
+    source ${BRUISE_DIR}/bin/activate
 
     # todo, compare modified times on requirements.txt and the $VENV_PATH
-    if [ requirements.txt -nt $BRUISE_DIR ]; then
-        pip install -r requirements.txt
+    if [ $__TOPLEVEL/requirements.txt -nt $BRUISE_DIR ]; then
+        pip install -r $__TOPLEVEL/requirements.txt
     fi
 }
 
 function bruiselist() {
-    for i in `ls $_VENV_BASE`; do
-        ls $_VENV_BASE/$i
-    done
+    ls -1 $_VENV_BASE
 }
 
 function bruiseuse() {
     if [ -z $1 ]; then
       __bruise
     else
-        source $_VENV_BASE/python/$1/bin/activate
+        source $_VENV_BASE/$1/bin/activate
     fi
 }
 
@@ -150,7 +131,7 @@ function bruisedelete() {
 cd() {
     builtin cd "$@"
     __fetch_repo_details
-    if [ ! -z $VENV_TYPE ]; then
+    if [ ! -z $BRANCHNAME ]; then
         __bruise
     fi
 }
