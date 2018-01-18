@@ -1,7 +1,6 @@
 export PATH=$PATH:$HOME/.rbenv/bin:/home/erik/.pyenv/bin:/opt/elasticdump/node_modules/.bin
 
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # shmake alias
 alias shmake="/home/erik/code/siemphony.builders/shmake.py"
