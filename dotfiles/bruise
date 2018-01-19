@@ -58,6 +58,7 @@ function cleanup_bruise() {
     unset __OLD_TOP
     unset __TOPLEVEL
     deactivate &> /dev/null
+    return 0
 }
 
 # create the pythonbrew venv combination
