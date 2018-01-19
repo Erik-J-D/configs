@@ -44,7 +44,6 @@ function __fetch_repo_details() {
         VENV_NAME=$REPONAME.$BRANCHNAME
     fi
     VENV_PATH=$_VENV_BASE/$VENV_NAME
-
 }
 
 function cleanup_bruise() {
@@ -101,7 +100,6 @@ function __bruise() {
     fi
 
     if [ -f $__TOPLEVEL/.python-version ]; then
-      pyenv versions|grep `cat $__TOPLEVEL/.python-version`
       if [ $? -ne 0 ]; then
           echo "Looks like you need pyenv to install your version, I'll go do that now."
           pyenv install `cat $__TOPLEVEL/.python-version`
@@ -113,6 +111,7 @@ function __bruise() {
 
     if [ -z $BRUISE_DIR ]; then
         echo "No environment exists, try running bruisemake"
+        echo ""
         return 1
     fi
 
@@ -144,12 +143,9 @@ function bruisedelete() {
     fi
 
     for i in `ls $_VENV_BASE`; do
-        envs=`ls $_VENV_BASE/$i`
-        for e in $envs; do
-            if [ "X$e" == "X$1" ]; then
-                rm -rf $_VENV_BASE/$i/$e
-            fi
-        done
+        if [ "X$i" == "X$1" ]; then
+            rm -rf $_VENV_BASE/$i
+        fi
     done
 
 }
@@ -160,4 +156,5 @@ cd() {
     if [ $? -eq "0" ]; then
         __bruise
     fi
+    return 0
 }
