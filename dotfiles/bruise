@@ -7,16 +7,29 @@ _VENV_BASE=$HOME/.venvs
 ## get the name of the branch, within the following revision control systems
 function __fetch_repo_details() {
 
-    BRANCHNAME=`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\\\\\1\ /`
+    __OLD_TOP=$__TOPLEVEL
+    __OLD_BRANCH=$BRANCHNAME
+
+    # If we're not in a git repo clean up and exit
+    BRANCHNAME=`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\\\\\1/`
     if [ -z $BRANCHNAME ]; then
-        unset VENV_NAME
-        unset VENV_PATH
-        unset VENV_PREFIX
-        unset REPONAME
-        return
+        cleanup_bruise
+        return 1
     else
         __TOPLEVEL=`git rev-parse --show-toplevel`
         REPONAME=`basename "$__TOPLEVEL"`
+        REQTXT=$__TOPLEVEL/requirements.txt
+    fi
+
+    # If we're not in a python repo clean up and exit
+    if [ ! -f $REQTXT ]; then
+        cleanup_bruise
+        return 1
+    fi
+
+    # If we're in the same repo / branch don't do anything
+    if [ "$__OLD_TOP" = "$__TOPLEVEL" ] && [ "$__OLD_BRANCH" = "$BRANCHNAME" ]; then
+        return 1
     fi
 
     if [ ! -d $_VENV_BASE ]; then
@@ -34,6 +47,20 @@ function __fetch_repo_details() {
 
 }
 
+function cleanup_bruise() {
+    unset BRUISE_DIR
+    unset PYTHON_VERSION
+    unset REPONAME
+    unset REQTXT
+    unset VENV_NAME
+    unset VENV_PATH
+    unset VENV_PREFIX
+    unset __OLD_BRANCH
+    unset __OLD_TOP
+    unset __TOPLEVEL
+    deactivate &> /dev/null
+}
+
 # create the pythonbrew venv combination
 # if there's a requirements.txt we'll pip that puppy
 function bruisemake() {
@@ -46,7 +73,7 @@ function bruisemake() {
         virtualenv --no-site-packages $VENV_PATH
     fi
     source $VENV_PATH/bin/activate
-    pip install -r $__TOPLEVEL/requirements.txt
+    pip install -r $REQTXT
 
 }
 
@@ -60,8 +87,8 @@ function __bruise() {
     fi
 
     # if for some reason we're testing in a local venv, it wins
-    if [ -d `pwd`/venv ]; then
-       BRUISE_DIR=`pwd`/venv
+    if [ -d $__TOPLEVEL/venv ]; then
+       BRUISE_DIR=$__TOPLEVEL/venv
     else
        bruisebase="${_VENV_BASE}/${VENV_PREFIX}${REPONAME}"
        if [ -d ${bruisebase}.${BRANCHNAME} ]; then
@@ -89,12 +116,11 @@ function __bruise() {
         return 1
     fi
 
-    echo "Environment loaded from ${BRUISE_DIR}"
     source ${BRUISE_DIR}/bin/activate
 
     # todo, compare modified times on requirements.txt and the $VENV_PATH
-    if [ $__TOPLEVEL/requirements.txt -nt $BRUISE_DIR ]; then
-        pip install -r $__TOPLEVEL/requirements.txt
+    if [ $REQTXT -nt $BRUISE_DIR ]; then
+        pip install -r $REQTXT
     fi
 }
 
@@ -131,7 +157,7 @@ function bruisedelete() {
 cd() {
     builtin cd "$@"
     __fetch_repo_details
-    if [ ! -z $BRANCHNAME ]; then
+    if [ $? -eq "0" ]; then
         __bruise
     fi
 }
