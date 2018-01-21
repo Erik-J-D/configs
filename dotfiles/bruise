@@ -145,7 +145,6 @@ function bruiseuse() {
 }
 
 function bruisedelete() {
-
     if [ -z $1 ]; then
         echo "bruisedelete bruise_to_delete"
         return 1
@@ -156,11 +155,19 @@ function bruisedelete() {
             rm -rf $_VENV_BASE/$i
         fi
     done
-
 }
 
 cd() {
     builtin cd "$@"
+    __fetch_repo_details
+    if [ $? -eq "0" ]; then
+        __bruise
+    fi
+    return 0
+}
+
+function git() {
+    command git "$@"
     __fetch_repo_details
     if [ $? -eq "0" ]; then
         __bruise
