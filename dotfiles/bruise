@@ -19,12 +19,12 @@ function __fetch_repo_details() {
     __OLD_BRANCH=$BRANCHNAME
 
     # If we're not in a git repo clean up and exit
-    BRANCHNAME=`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\\\\\1/`
+    BRANCHNAME=`command git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\\\\\1/`
     if [ -z $BRANCHNAME ]; then
         cleanup_bruise
         return 1
     else
-        __TOPLEVEL=`git rev-parse --show-toplevel`
+        __TOPLEVEL=`command git rev-parse --show-toplevel`
         REPONAME=`basename "$__TOPLEVEL"`
         REQTXT=$__TOPLEVEL/requirements.txt
     fi
@@ -56,6 +56,7 @@ function __fetch_repo_details() {
 
 function cleanup_bruise() {
     unset BRUISE_DIR
+    unset ISREPO
     unset PYTHON_VERSION
     unset REPONAME
     unset REQTXT
@@ -72,6 +73,8 @@ function cleanup_bruise() {
 # create the pythonbrew venv combination
 # if there's a requirements.txt we'll pip that puppy
 function bruisemake() {
+
+    __fetch_repo_details
 
     if [ ! -z $1 ]; then
         VENV_PATH=$_VENV_BASE/$1
@@ -168,9 +171,12 @@ cd() {
 
 function git() {
     command git "$@"
-    __fetch_repo_details
-    if [ $? -eq "0" ]; then
-        __bruise
+    ISREPO=`command git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\\\\\1/`
+    if [ ! -z $ISREPO ]; then
+        __fetch_repo_details
+        if [ $? -eq "0" ]; then
+            __bruise
+        fi
     fi
     return 0
 }
