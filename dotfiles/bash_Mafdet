@@ -1,4 +1,4 @@
-alias sshwork="ssh erik@coubs.hopto.org -p 24998"
+alias shwork="ssh erik@coubs.hopto.org -p 24999"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
