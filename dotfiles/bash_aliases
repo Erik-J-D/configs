@@ -1,15 +1,14 @@
 alias sl='ls'
+alias ll='ls --group-directories-first -lhF'
+alias la='ls --group-directories-first -AF'
 
 # some colour things
-alias ls='ls --color=auto'
+alias ls='ls --group-directories-first --color=auto -F'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-alias ll='ls -lh'
-alias la='ls -A'
 
 # Open multiple files as tabs
 alias vim="vim -p"

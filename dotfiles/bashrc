@@ -23,6 +23,11 @@ if [ -f ~/.bash_environment ]; then
     . ~/.bash_environment
 fi
 
+# django_bash_completion
+if [ -f ~/.django_bash_completion ]; then
+    . ~/.django_bash_completion
+fi
+
 # Per computer extra settings
 if [ -f ~/.bash_$HOSTNAME ]; then
     . ~/.bash_$HOSTNAME
