@@ -3,6 +3,12 @@ export PATH=$PATH:$HOME/.rbenv/bin:/home/erik/.pyenv/bin:/opt/elasticdump/node_m
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+if command -v rbenv 1>/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
+
 
 # shmake alias
 alias shmake="/home/erik/code/siemphony.builders/shmake.py"
