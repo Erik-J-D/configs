@@ -11,7 +11,7 @@
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [alias]
-    bclean = "!f() { git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d ; }; f"
+    bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d ; }; f"
     all = "!f() { ls | xargs -I{} git -C {} $1; }; f"
     lastcommit = show --name-status HEAD
 [filter "lfs"]
