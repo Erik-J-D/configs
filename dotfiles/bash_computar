@@ -12,6 +12,7 @@ fi
 
 # shmake alias
 alias shmake="/home/erik/code/siemphony.builders/shmake.py"
+alias rundocker='docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.1.1'
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$JAVA_HOME/bin:/opt/s3cmd:$PATH
