@@ -25,13 +25,15 @@ done
 xrdb ~/.Xresources
 
 # get pathogen and vim plugins
-mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
+    mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+fi
 URLS="
-https://github.com/fatih/vim-go.git
 https://github.com/ctrlpvim/ctrlp.vim
 https://github.com/scrooloose/nerdcommenter
 https://github.com/nvie/vim-flake8.git
 https://github.com/morhetz/gruvbox.git
+https://github.com/sheerun/vim-polyglot.git
 "
 for URL in $URLS; do
     IFS=/; read -a URLDIRTMP <<<"$URL"; IFS=.; read -a URLDIR <<< "${URLDIRTMP[-1]}"; unset IFS
