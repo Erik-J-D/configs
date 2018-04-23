@@ -37,3 +37,5 @@ alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'
 
 # Docker - Remove stopped containers and untagged images
 alias dockerclean="docker rm \$(docker ps -a -q); docker rmi \$(docker images | grep \"^<none>\" | awk \"{print $3}\")"
+
+alias lisp="rlwrap sbcl"
