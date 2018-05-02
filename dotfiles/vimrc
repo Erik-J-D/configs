@@ -4,6 +4,7 @@ execute pathogen#infect()
 " set up ctrl-p binding
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.tar.gz,*.zip,*.exe,*\\tmp\\*,.DS_Store
 
 let g:NERDDefaultAlign = 'left'
 
@@ -17,10 +18,11 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-
 let g:syntastic_javascript_checkers = ['eslint']
+autocmd VimEnter * SyntasticToggleMode " disable syntastic by default
+map <F6> <esc>:SyntasticToggleMode<cr>
 
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
@@ -57,6 +59,7 @@ highlight ColorColumn ctermbg=black
 autocmd FileType make       setlocal noexpandtab
 autocmd FileType golang     setlocal noexpandtab
 autocmd Filetype html       setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype css        setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype ruby       setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=0 expandtab
 autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 expandtab
@@ -103,10 +106,12 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 "vim-flake8
-map <F3> :call Flake8()<CR>
-autocmd BufWritePost *.py call Flake8()
+"map <F3> :call Flake8()<CR>
+"autocmd BufWritePost *.py call Flake8()
 
 "Make quickfix window scale with amount of stuff, max 10 lines
 au FileType qf call AdjustWindowHeight(3, 10)

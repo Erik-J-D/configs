@@ -1,3 +1,5 @@
+alias pf='pip freeze | grep -v "pkg-resources==0.0.0"'
+
 alias sl='ls'
 alias ll='ls --group-directories-first -lhF'
 alias la='ls --group-directories-first -AF'

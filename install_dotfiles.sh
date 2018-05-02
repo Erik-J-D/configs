@@ -35,6 +35,7 @@ https://github.com/morhetz/gruvbox.git
 https://github.com/sheerun/vim-polyglot.git
 https://github.com/vim-syntastic/syntastic.git
 https://github.com/mtscout6/syntastic-local-eslint.vim.git
+https://github.com/prettier/vim-prettier.git
 "
 for URL in $URLS; do
     IFS=/; read -a URLDIRTMP <<<"$URL"; IFS=.; read -a URLDIR <<< "${URLDIRTMP[-1]}"; unset IFS
