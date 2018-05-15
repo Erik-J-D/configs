@@ -42,3 +42,5 @@ alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'
 alias dockerclean="docker rm \$(docker ps -a -q); docker rmi \$(docker images | grep \"^<none>\" | awk \"{print $3}\")"
 # Run an ephemeral elastic
 alias elastic="docker run -p 9200:9200 -p 9300:9300 -e \"discovery.type=single-node\" docker.elastic.co/elasticsearch/elasticsearch:6.2.2"
+
+alias lisp="rlwrap sbcl"
