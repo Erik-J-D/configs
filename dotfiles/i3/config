@@ -1,7 +1,7 @@
 set $mod Mod4
 
-set $laptop_screen HDMI1
-set $projector HDMI2
+set $laptop_screen HDMI-1
+set $projector HDMI-2
 
 new_window pixel 2
 smart_borders on
