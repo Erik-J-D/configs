@@ -9,6 +9,7 @@ if command -v rbenv 1>/dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
 
+alias sshml="ssh -X -L 8888:localhost:8888 erik@192.168.200.18"
 
 # shmake alias
 alias shmake="/home/erik/code/siemphony.builders/shmake.py"
