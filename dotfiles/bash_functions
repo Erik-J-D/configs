@@ -1,8 +1,8 @@
 # Set PS1
 function color_my_prompt {
     local __last_command_health='$(if [[ $? == 0 ]]; then echo "\[\033[01;32m\]✓"; else echo "\[\033[01;31m\]✗"; fi)'
-    local __user_and_host='$(if [[ -n $SSH_CLIENT ]]; then echo "\[\033[01;31m\]\u@\h"; else echo "\[\033[01;32m\]\u@\h"; fi)'
-    local __cur_location="\[\033[01;34m\]\w"
+    local __user_and_host='$(if [[ -n $SSH_CLIENT ]]; then echo "\[\033[01;31m\]\u@\h"; else echo "\[\033[01;34m\]\u@\h"; fi)'
+    local __cur_location="\[\033[01;32m\]\w"
     local __git_branch_color="\[\033[33m\]"
     local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)/`'
     local __prompt_tail="\[\033[01;35m\]λ"
