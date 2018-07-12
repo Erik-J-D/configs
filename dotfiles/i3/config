@@ -4,9 +4,6 @@ set $laptop_screen HDMI-1
 set $projector HDMI-2
 
 new_window pixel 2
-smart_borders on
-gaps inner 16
-gaps outer 0
 
 
 # AUTOEXEC
