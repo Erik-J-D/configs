@@ -176,15 +176,15 @@ bindsym $mod+ctrl+n exec "nemo --no-desktop"
 bindsym $mod+ctrl+k exec "keepass2"
 bindsym $mod+ctrl+l exec "i3lock -i ~/Pictures/wallpaper.png"
 
-set $Locker i3lock && sleep 1
+set $Locker i3lock -i ~/Pictures/wallpaper.png && sleep 1
 
 set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym s exec --no-startup-id $Locker && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true, mode "default"
+    bindsym h exec --no-startup-id $Locker && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Hibernate" boolean:true, mode "default"
+    bindsym r exec --no-startup-id dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true, mode "default"
+    bindsym Shift+s exec --no-startup-id dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
