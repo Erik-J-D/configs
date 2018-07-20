@@ -5,8 +5,7 @@ set $projector HDMI-2
 
 set $terminal konsole
 
-new_window pixel 2
-
+new_window pixel 4
 
 # AUTOEXEC
 
