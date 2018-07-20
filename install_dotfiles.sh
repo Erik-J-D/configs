@@ -5,29 +5,28 @@
   # dotfiles in the home directory #
   ##################################
 
-dir=~/configs/dotfiles     # dotfiles directory
-olddir=~/configs_old       # old dotfiles backup directory
+function delete_symlinks {
+    for filename in $1; do
+        if [[ -f ~/$filename || -L ~/$filename ]]; then
+            echo "deleting old" $filename
+            rm -f "~/$filename"
+        fi
+    done
+}
 
-# create configs_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo "...done"
-
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
-cd $dir
-for file in *; do
-    mv ~/.$file $olddir/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+for app in *; do
+    echo "linking " $app
+    if [ -d ${app} ]; then
+        CONFLICTS=$(stow -nv "$app" 2>&1 | awk '/\* existing target is/ {print $NF}')
+        delete_symlinks "$CONFLICTS"
+        stow -R $app
+    fi
 done
 
 # Do Xresource loading
 xrdb ~/.Xresources
 
-# get pathogen and vim plugins
-if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
-    mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-fi
+# get vim plugins
 URLS="
 https://github.com/ctrlpvim/ctrlp.vim
 https://github.com/scrooloose/nerdcommenter

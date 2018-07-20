@@ -1,13 +1,12 @@
 [user]
-	email = erik@erik-j.de
-	name = Erik Derohanian
-	signingkey = 2452D4AE
+    email = erik@erik-j.de
+    name = Erik Derohanian
 [color]
-	ui = true
+    ui = true
 [core]
-	editor = vim
+    editor = vim
 [push]
-	default = simple
+    default = simple
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [alias]
@@ -15,7 +14,7 @@
     all = "!f() { ls | xargs -I{} git -C {} $1; }; f"
     lastcommit = show --name-status HEAD
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true

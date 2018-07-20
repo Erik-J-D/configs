@@ -99,13 +99,6 @@ set foldlevel=1
 "remap jj to escape in insert mode
 inoremap jj <Esc>
 
-"auto close brackets
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-
 com! FormatJSON %!python -m json.tool
 com! FormatXML %!xmllint --format
 
