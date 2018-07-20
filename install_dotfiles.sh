@@ -15,8 +15,8 @@ function delete_symlinks {
 }
 
 for app in *; do
-    echo "linking " $app
     if [ -d ${app} ]; then
+        echo "linking " $app
         CONFLICTS=$(stow -nv "$app" 2>&1 | awk '/\* existing target is/ {print $NF}')
         delete_symlinks "$CONFLICTS"
         stow -R $app

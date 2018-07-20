@@ -27,7 +27,7 @@ exec --no-startup-id sh -c "xset s 900; xmodmap ~/.keyswapper"
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id feh --no-xinerama --bg-scale ~/Pictures/wallpaper.png
-exec redshift -t 6500:5000 -b 1.0:0.8 -l 43.65:79.38
+exec --no-startup-id redshift
 
 
 # SETTINGS
