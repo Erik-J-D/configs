@@ -1,4 +1,5 @@
 alias pf='pip freeze | grep -v "pkg-resources==0.0.0"'
+alias runs='./manage.py runserver'
 
 alias sl='ls'
 alias ll='ls --group-directories-first -lhF'
@@ -27,6 +28,7 @@ alias gits='git status'
 
 alias pserv='python3 -m http.server'
 alias svba='source venv/bin/activate'
+
 # vagrant shit
 alias vssh="vagrant ssh"
 alias vp="vagrant provision"

@@ -1,7 +1,7 @@
 set $mod Mod4
 
-set $laptop_screen HDMI-1
-set $projector HDMI-2
+set $laptop_screen eDP-1-1
+set $projector HDMI-1-1
 
 set $terminal konsole
 
@@ -13,7 +13,9 @@ exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
 assign [class="Slack"] 3
 exec slack
-exec --no-startup-id i3-msg 'workspace 4; exec $terminal; workspace 1'
+assign [class="Stride"] 4
+exec stride
+exec --no-startup-id i3-msg 'workspace 4; exec stride; workspace 1'
 assign [class="SpiderOakONE"] 10
 exec SpiderOakONE
 
@@ -177,7 +179,7 @@ bindsym $mod+ctrl+n exec "nemo --no-desktop"
 bindsym $mod+ctrl+k exec "keepass2"
 bindsym $mod+ctrl+l exec "i3lock -i ~/Pictures/wallpaper.png"
 
-set $Locker i3lock -i ~/Pictures/wallpaper.png && sleep 1
+set $Locker i3lock -t -i ~/Pictures/wallpaper.png && sleep 1
 
 set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
