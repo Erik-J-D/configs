@@ -27,8 +27,6 @@ exec --no-startup-id test -f ~/.Xresources && xrdb -merge ~/.Xresources
 
 exec --no-startup-id sh -c "xset s 900; xmodmap ~/.keyswapper"
 exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id feh --no-xinerama --bg-scale ~/Pictures/wallpaper.png
 exec --no-startup-id redshift
 
 
