@@ -1,5 +1,5 @@
 [Desktop Entry]
-DefaultProfile=Default.profile
+DefaultProfile=
 
 [Favorite Profiles]
 Favorites=
@@ -8,11 +8,14 @@ Favorites=
 ShowMenuBarByDefault=false
 
 [MainWindow]
-Height 1080=1053
+Height 1080=1048
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAAdwAAAQMAAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA7gAAAQYAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1920=632
+Width 1920=952
+
+[Profile Shortcuts]
+Ctrl+D[$d]
 
 [TabBar]
 ShowQuickButtons=true
