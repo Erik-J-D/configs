@@ -1,5 +1,5 @@
 [Desktop Entry]
-DefaultProfile=
+DefaultProfile=Default.profile
 
 [Favorite Profiles]
 Favorites=
@@ -12,7 +12,7 @@ Height 1080=1048
 MenuBar=Disabled
 State=AAAA/wAAAAD9AAAAAAAAA7gAAAQYAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1920=952
+Width 1920=872
 
 [Profile Shortcuts]
 Ctrl+D[$d]
