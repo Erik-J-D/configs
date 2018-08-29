@@ -28,7 +28,7 @@
 *color15: #ebdbb2
 
 
-URxvt.font: xft:Fira Mono:size=10
+URxvt.font: xft:Fira Mono:size=11
 URxvt.cursorBlink:  true
 
 URxvt*scrollColor:        #d1d4e0

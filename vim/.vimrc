@@ -24,7 +24,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 autocmd VimEnter * SyntasticToggleMode " disable syntastic by default
-map <F6> <esc>:SyntasticToggleMode<cr>
+map <F6> :SyntasticToggleMode<cr>
 
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
