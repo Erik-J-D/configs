@@ -1,7 +1,7 @@
 set $mod Mod4
 
-set $laptop_screen eDP-1-1
-set $projector HDMI-1-1
+set $laptop_screen eDP-1
+set $projector HDMI-2
 
 set $terminal konsole
 
