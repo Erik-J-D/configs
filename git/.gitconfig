@@ -13,6 +13,7 @@
     bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d ; }; f"
     all = "!f() { ls | xargs -I{} git -C {} $1; }; f"
     lastcommit = show --name-status HEAD
+    undolastcommit = reset HEAD~1 --hard
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f

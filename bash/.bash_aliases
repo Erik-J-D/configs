@@ -12,6 +12,7 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias ccat='pygmentize -g -O style=colorful,linenos=1'
 
 # Open multiple files as tabs
 alias vim="vim -p"
