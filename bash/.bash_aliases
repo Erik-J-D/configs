@@ -1,5 +1,6 @@
 alias pf='pip freeze | grep -v "pkg-resources==0.0.0"'
 alias runs='./manage.py runserver'
+alias o='xdg-open'
 
 alias sl='ls'
 alias ll='ls --group-directories-first -lhF'
@@ -39,9 +40,3 @@ alias vgs="vagrant global-status"
 alias vh="vagrant halt"
 
 alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'
-
-# Docker
-# Remove stopped containers and untagged images
-alias dockerclean="docker rm \$(docker ps -a -q); docker rmi \$(docker images | grep \"^<none>\" | awk \"{print $3}\")"
-
-alias lisp="rlwrap sbcl"

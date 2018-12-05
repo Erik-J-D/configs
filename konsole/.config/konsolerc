@@ -8,11 +8,11 @@ Favorites=
 ShowMenuBarByDefault=false
 
 [MainWindow]
-Height 1080=1049
+Height 1080=520
 MenuBar=Disabled
 State=AAAA/wAAAAD9AAAAAAAAB3gAAAQZAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1920=952
+Width 1920=472
 
 [Profile Shortcuts]
 Ctrl+D[$d]
