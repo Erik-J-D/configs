@@ -44,3 +44,14 @@ for URL in $URLS; do
         git clone $URL ~/.vim/bundle/$URLDIR
     fi
 done
+
+# do fonts
+echo "Cloning fonts, goog & fira code"
+FONT_GIT_DIR="/tmp/fonts"
+FONT_DIR="$HOME/.fonts"
+shopt -s globstar
+mkdir -p $FONT_GIT_DIR $FONT_DIR
+git clone git@github.com:Erik-J-D/FiraCode.git $FONT_GIT_DIR/fira
+git clone git@github.com:Erik-J-D/fonts.git $FONT_GIT_DIR/goog
+cp $FONT_GIT_DIR/**/*.ttf $FONT_DIR/
+fc-cache -fv ~/.fonts
