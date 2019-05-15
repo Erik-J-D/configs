@@ -1,6 +1,7 @@
 alias pf='pip freeze | grep -v "pkg-resources==0.0.0"'
 alias runs='./manage.py runserver'
 alias o='xdg-open'
+alias :q='exit'
 
 alias sl='ls'
 alias ll='ls --group-directories-first -lhF'

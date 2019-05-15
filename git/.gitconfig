@@ -12,6 +12,7 @@
 [alias]
     bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|development|production)' | xargs git branch -d ; }; f"
     all = "!f() { ls | xargs -I{} git -C {} $1; }; f"
+    listlarge = "!f() { git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' | awk '$2 >= 2^20' | sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest; }; f"
     lastcommit = show --name-status HEAD
     undolastcommit = reset HEAD~1 --hard
 [filter "lfs"]
