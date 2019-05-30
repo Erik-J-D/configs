@@ -2,6 +2,7 @@ alias pf='pip freeze | grep -v "pkg-resources==0.0.0"'
 alias runs='./manage.py runserver'
 alias o='xdg-open'
 alias :q='exit'
+alias lisp='echo ">>> rlwrap sbcl"; rlwrap sbcl'
 
 alias sl='ls'
 alias ll='ls --group-directories-first -lhF'
@@ -17,7 +18,7 @@ alias egrep='egrep --color=auto'
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
 
 # Open multiple files as tabs
-alias vim="vim -p"
+alias vim='vim -p'
 
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
@@ -33,11 +34,11 @@ alias pserv='python3 -m http.server'
 alias svba='source venv/bin/activate'
 
 # vagrant shit
-alias vssh="vagrant ssh"
-alias vp="vagrant provision"
-alias vc="vagrant destroy -f && vagrant up --provision"
-alias vd="vagrant destroy -f"
-alias vgs="vagrant global-status"
-alias vh="vagrant halt"
+alias vssh='vagrant ssh'
+alias vp='vagrant provision'
+alias vc='vagrant destroy -f && vagrant up --provision'
+alias vd='vagrant destroy -f'
+alias vgs='vagrant global-status'
+alias vh='vagrant halt'
 
 alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'

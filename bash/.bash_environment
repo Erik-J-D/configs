@@ -3,8 +3,20 @@
 HISTCONTROL=ignoreboth
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=10000
+HISTSIZE=100000
+HISTFILESIZE=100000
+
+# ignore dumb commands
+HISTIGNORE='ls:bg:fg:history'
+
+# show time of commands too
+HISTTIMEFORMAT='%d/%m/%y %H:%M   '
+
+# write history immediately
+PROMPT_COMMAND='history -a'
+
+# make long stuff one line
+shopt -s cmdhist
 
 # no ctrl-s to suspend, we want our bash history
 stty -ixon
@@ -32,7 +44,4 @@ fi
 # Reload Xresources
 xrdb ~/.Xresources
 
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/.go
-
-export PATH=$PATH:$GOROOT/bin:~/.local/bin/:/home/erik/.yarn/bin
+export PATH=$PATH:~/.local/bin/:/home/erik/.yarn/bin
