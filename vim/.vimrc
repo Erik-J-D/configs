@@ -141,3 +141,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+
+let g:slime_target = "vimterminal"
+let g:slime_vimterminal_config = {}
+let g:slime_vimterminal_cmd = "racket -I sicp"

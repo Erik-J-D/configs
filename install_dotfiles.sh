@@ -39,6 +39,7 @@ https://github.com/kien/rainbow_parentheses.vim
 https://github.com/wlangstroth/vim-racket
 https://github.com/itchyny/lightline.vim
 https://github.com/tpope/vim-fugitive.git
+https://github.com/jpalardy/vim-slime.git
 "
 for URL in $URLS; do
     IFS=/; read -a URLDIRTMP <<<"$URL"; IFS=.; read -a URLDIR <<< "${URLDIRTMP[-1]}"; unset IFS
