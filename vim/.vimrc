@@ -68,7 +68,7 @@ autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 expandtab
 
 set number
 set ruler
-se cursorline
+set cursorline
 
 set noeb " turn off notifications
 set visualbell
@@ -122,3 +122,8 @@ function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
+" Rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
