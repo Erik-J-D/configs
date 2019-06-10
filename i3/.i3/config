@@ -44,9 +44,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+q kill
 
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
-bindsym XF86Search exec --no-startup-id j4-dmenu-desktop
-bindsym Menu exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -combi-modi drun#ssh#window -theme gruvbox-dark -show combi
 
 # bind volume buttons
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/pactl_volume.sh +5%
