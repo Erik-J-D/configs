@@ -7,8 +7,6 @@
     editor = vim
 [push]
     default = simple
-[url "git@github.com:"]
-    insteadOf = https://github.com/
 [alias]
     bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|development|production)' | xargs git branch -d ; }; f"
     all = "!f() { ls | xargs -I{} git -C {} $1; }; f"

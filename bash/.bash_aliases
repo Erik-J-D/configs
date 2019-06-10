@@ -33,12 +33,4 @@ alias gits='git status'
 alias pserv='python3 -m http.server'
 alias svba='source venv/bin/activate'
 
-# vagrant shit
-alias vssh='vagrant ssh'
-alias vp='vagrant provision'
-alias vc='vagrant destroy -f && vagrant up --provision'
-alias vd='vagrant destroy -f'
-alias vgs='vagrant global-status'
-alias vh='vagrant halt'
-
 alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'
