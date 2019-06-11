@@ -51,6 +51,8 @@ filetype indent plugin on
 
 set t_Co=256
 set background=dark
+let g:gruvbox_italic=1
+set termguicolors
 colorscheme gruvbox
 
 set cindent
