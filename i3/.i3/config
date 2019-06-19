@@ -1,9 +1,9 @@
 set $mod Mod4
 
-set $laptop_screen eDP-1
-set $projector HDMI-2
+set $laptop_screen eDP-1-1
+set $projector HDMI-1-2
 
-set $terminal konsole
+set $terminal terminator
 
 new_window pixel 4
 
@@ -13,9 +13,7 @@ exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
 assign [class="Slack"] 3
 exec slack
-assign [class="Stride"] 4
-exec stride
-exec --no-startup-id i3-msg 'workspace 4; exec stride; workspace 1'
+exec --no-startup-id i3-msg 'workspace 5; exec firefox -no-remote -p Scrolling\ Garbage\ of\ Doom; workspace 1'
 assign [class="SpiderOakONE"] 10
 exec SpiderOakONE
 
@@ -46,9 +44,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+q kill
 
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
-bindsym XF86Search exec --no-startup-id j4-dmenu-desktop
-bindsym Menu exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -combi-modi drun#ssh#window -theme gruvbox-dark -show combi
 
 # bind volume buttons
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/pactl_volume.sh +5%

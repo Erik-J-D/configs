@@ -1,5 +1,23 @@
-" Run Pathogen stuff
-execute pathogen#infect()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/bundle')
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'morhetz/gruvbox'
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-syntastic/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'prettier/vim-prettier'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'wlangstroth/vim-racket'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'jpalardy/vim-slime'
+call plug#end()
 
 " set up ctrl-p binding
 let g:ctrlp_map = '<c-p>'
@@ -33,6 +51,8 @@ filetype indent plugin on
 
 set t_Co=256
 set background=dark
+let g:gruvbox_italic=1
+set termguicolors
 colorscheme gruvbox
 
 set cindent
@@ -68,7 +88,7 @@ autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 expandtab
 
 set number
 set ruler
-se cursorline
+set cursorline
 
 set noeb " turn off notifications
 set visualbell
@@ -122,3 +142,26 @@ function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
+" Rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"lightline
+set laststatus=2
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+
+let g:slime_target = "vimterminal"
+let g:slime_vimterminal_config = {}
+let g:slime_vimterminal_cmd = "racket -I sicp"
