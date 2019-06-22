@@ -42,6 +42,6 @@ if ! shopt -oq posix; then
 fi
 
 # Reload Xresources
-xrdb ~/.Xresources
+if xhost >& /dev/null ; then xrdb ~/.Xresources ; fi
 
 export PATH=$PATH:~/.local/bin/:/home/erik/.yarn/bin
