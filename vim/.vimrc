@@ -37,7 +37,12 @@ filetype indent plugin on
 set t_Co=256
 set background=dark
 let g:gruvbox_italic=1
-"set termguicolors
+
+if &term =~# '256color' && &term !~# '^screen' && &term !~# '^tmux'
+    set termguicolors
+endif
+
+
 colorscheme gruvbox
 
 set cindent
