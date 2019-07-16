@@ -23,9 +23,12 @@ exec --nostartup-id sh -c 'xinput --set-prop "Primax Kensington Eagle Trackball"
 # Load xresources changes.
 exec --no-startup-id test -f ~/.Xresources && xrdb -merge ~/.Xresources
 
-exec --no-startup-id sh -c "xset s 900; xmodmap ~/.keyswapper"
+#exec --no-startup-id sh -c "xset s 900; xmodmap ~/.keyswapper"
 exec --no-startup-id nm-applet
-exec --no-startup-id redshift
+
+# start up ssh-agent
+exec --no-startup-id eval "$(ssh-agent -s)"
+exec --no-startup-id ssh-add
 
 
 # SETTINGS
