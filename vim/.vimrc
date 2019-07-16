@@ -65,6 +65,7 @@ highlight SpecialKey ctermfg=2  " highlight actual tabs
 set list
 set listchars=tab:▸·,trail:·
 
+set tabpagemax=100
 set colorcolumn=80
 highlight ColorColumn ctermbg=black
 
