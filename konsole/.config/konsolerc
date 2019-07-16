@@ -9,10 +9,12 @@ ShowMenuBarByDefault=false
 
 [MainWindow]
 Height 1080=1048
+Height 2160=1060
 MenuBar=Disabled
 State=AAAA/wAAAAD9AAAAAAAAB3gAAAQZAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 1920=472
+Width 3840=1912
 
 [Profile Shortcuts]
 Ctrl+D[$d]

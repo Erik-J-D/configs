@@ -9,14 +9,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-syntastic/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'nvie/vim-flake8'
 Plug 'prettier/vim-prettier'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'jpalardy/vim-slime'
 call plug#end()
 
 " set up ctrl-p binding
@@ -30,19 +28,6 @@ let g:NERDDefaultAlign = 'left'
 
 " Ignore .jsx ext dependency for jsx in .js files
 let g:jsx_ext_required = 0
-
-" Suggested syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-autocmd VimEnter * SyntasticToggleMode " disable syntastic by default
-map <F6> :SyntasticToggleMode<cr>
 
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
@@ -86,7 +71,7 @@ autocmd Filetype ruby       setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=0 expandtab
 autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 expandtab
 
-set number
+set number relativenumber
 set ruler
 set cursorline
 
@@ -133,8 +118,8 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue Prettier
 
 "vim-flake8
-"map <F3> :call Flake8()<CR>
-"autocmd BufWritePost *.py call Flake8()
+map <F3> :call Flake8()<CR>
+autocmd BufWritePost *.py call Flake8()
 
 "Make quickfix window scale with amount of stuff, max 10 lines
 au FileType qf call AdjustWindowHeight(3, 10)
@@ -159,6 +144,9 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
+      \ },
+      \ 'component': {
+      \   'lineinfo': '%l/%L:%-3v'
       \ },
       \ }
 
