@@ -127,6 +127,7 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 map <F3> :call Flake8()<CR>
 autocmd BufWritePost *.py call Flake8()
 let g:flake8_show_in_file=1
+let g:flake8_show_in_gutter=1
 
 "Make quickfix window scale with amount of stuff, max 10 lines
 au FileType qf call AdjustWindowHeight(3, 10)
