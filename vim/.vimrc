@@ -11,10 +11,11 @@ Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'nvie/vim-flake8'
 Plug 'prettier/vim-prettier'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'wlangstroth/vim-racket'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'owickstrom/vim-colors-paramount'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'psf/black'
 call plug#end()
 
 " set up ctrl-p binding
@@ -43,7 +44,8 @@ if &term =~# '256color' && &term !~# '^screen' && &term !~# '^tmux'
 endif
 
 
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme paramount
 
 set cindent
 set cinkeys-=0#
@@ -66,7 +68,7 @@ set list
 set listchars=tab:▸·,trail:·
 
 set tabpagemax=100
-set colorcolumn=80
+set colorcolumn=120
 highlight ColorColumn ctermbg=black
 
 autocmd FileType make       setlocal noexpandtab
@@ -77,7 +79,7 @@ autocmd Filetype ruby       setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=0 expandtab
 autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 expandtab
 
-set number relativenumber
+set number
 set ruler
 set cursorline
 
@@ -123,8 +125,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue Prettier
 
-"vim-flake8
+"Python shit
 map <F3> :call Flake8()<CR>
+autocmd BufWritePre *.py execute ':Black'
 autocmd BufWritePost *.py call Flake8()
 let g:flake8_show_in_file=1
 let g:flake8_show_in_gutter=1
