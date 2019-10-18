@@ -29,3 +29,7 @@ function pyclean () {
     find . -type f -name "*.py[co]" -delete
     find . -type d -name "__pycache__" -delete
 }
+
+function decrypt_pdf() {
+    qpdf --decrypt --password="" $1 $2
+}

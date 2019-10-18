@@ -6,16 +6,15 @@ endif
 
 call plug#begin('~/.vim/bundle')
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'itchyny/lightline.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'leafoftree/vim-vue-plugin'
 Plug 'morhetz/gruvbox'
-Plug 'sheerun/vim-polyglot'
 Plug 'nvie/vim-flake8'
 Plug 'prettier/vim-prettier'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'psf/black'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " set up ctrl-p binding
@@ -26,9 +25,6 @@ let g:ctrlp_max_depth=40
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.tar.gz,*.zip,*.exe,*\\tmp\\*,.DS_Store,*/dist/*,*/node_modules/*
 
 let g:NERDDefaultAlign = 'left'
-
-" Ignore .jsx ext dependency for jsx in .js files
-let g:jsx_ext_required = 0
 
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
@@ -43,9 +39,7 @@ if &term =~# '256color' && &term !~# '^screen' && &term !~# '^tmux'
     set termguicolors
 endif
 
-
-"colorscheme gruvbox
-colorscheme paramount
+colorscheme gruvbox
 
 set cindent
 set cinkeys-=0#
@@ -54,7 +48,6 @@ set indentkeys-=0#
 set smartcase   " search intelligently
 set hlsearch  " highlight searches, and search incrementaly
 set incsearch
-highlight Search ctermbg=darkblue ctermfg=White
 
 map <F2> <esc>:noh<cr><esc>
 set wrapscan
@@ -68,8 +61,6 @@ set list
 set listchars=tab:▸·,trail:·
 
 set tabpagemax=100
-set colorcolumn=120
-highlight ColorColumn ctermbg=black
 
 autocmd FileType make       setlocal noexpandtab
 autocmd FileType golang     setlocal noexpandtab
@@ -103,11 +94,6 @@ set pastetoggle=<F5>
 nmap <F7> <esc>:tabp<cr>  " map F7 F8 and F9 to previous, next, and new tab
 nmap <F8> <esc>:tabn<cr>
 nmap <F9> <esc>:tabe<cr>
-
-set foldmethod=indent  "fold based on indent
-set foldnestmax=10     "deepest fold is 10 levels
-set nofoldenable       "dont fold by default
-set foldlevel=1
 
 "remap jj to escape in insert mode
 inoremap jj <Esc>
@@ -160,7 +146,3 @@ let g:lightline = {
       \   'lineinfo': '%l/%L:%-3v'
       \ },
       \ }
-
-let g:slime_target = "vimterminal"
-let g:slime_vimterminal_config = {}
-let g:slime_vimterminal_cmd = "racket -I sicp"
