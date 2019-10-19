@@ -14,6 +14,7 @@ Plug 'nvie/vim-flake8'
 Plug 'prettier/vim-prettier'
 Plug 'psf/black'
 Plug 'scrooloose/nerdcommenter'
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
@@ -32,7 +33,7 @@ syntax enable " syntax highlighting
 filetype indent plugin on
 
 set t_Co=256
-set background=dark
+set background=light
 let g:gruvbox_italic=1
 
 if &term =~# '256color' && &term !~# '^screen' && &term !~# '^tmux'
@@ -134,7 +135,7 @@ au Syntax * RainbowParenthesesLoadBraces
 set laststatus=2
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
