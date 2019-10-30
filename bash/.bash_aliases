@@ -1,8 +1,6 @@
 alias pf='pip freeze | grep -v "pkg-resources==0.0.0" | grep -v "ubuntu-drivers-common==0.0.0"'
-alias runs='./manage.py runserver'
 alias o='xdg-open'
 alias :q='exit'
-alias lisp='echo ">>> rlwrap sbcl"; rlwrap sbcl'
 
 alias sl='ls'
 alias ll='ls --group-directories-first -lhF'
