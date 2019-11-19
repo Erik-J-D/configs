@@ -33,3 +33,7 @@ function pyclean () {
 function decrypt_pdf() {
     qpdf --decrypt --password="" $1 $2
 }
+
+function num_pages() {
+    qpdf --show-npages $1 2> /dev/null
+}

@@ -42,6 +42,9 @@ endif
 
 colorscheme gruvbox
 
+" use system clipboard - vim 7.3.74+
+set clipboard=unnamedplus
+
 set cindent
 set cinkeys-=0#
 set indentkeys-=0#
