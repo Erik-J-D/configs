@@ -105,13 +105,42 @@ inoremap jj <Esc>
 com! FormatJSON %!python -m json.tool
 com! FormatXML %!xmllint --format
 
-fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" Restore cursor position, window position, and last search after running a
+" command.
+function! Preserve(command)
+  " Save the last search.
+  let search = @/
+
+  " Save the current cursor position.
+  let cursor_position = getpos('.')
+
+  " Save the current window position.
+  normal! H
+  let window_position = getpos('.')
+  call setpos('.', cursor_position)
+
+  " Execute the command.
+  execute a:command
+
+  " Restore the last search.
+  let @/ = search
+
+  " Restore the previous window position.
+  call setpos('.', window_position)
+  normal! zt
+
+  " Restore the previous cursor position.
+  call setpos('.', cursor_position)
+endfunction
+
+" Remove all trailing whitespace on save
+autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+
+"Format scheme on save
+autocmd BufWritePre *.ss,*.scm call Preserve('normal gg=G')
+
+" JS shit
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue Prettier
 
