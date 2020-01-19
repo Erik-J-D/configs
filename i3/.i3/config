@@ -21,7 +21,7 @@ exec --no-startup-id test -f ~/.Xresources && xrdb -merge ~/.Xresources
 
 exec --no-startup-id feh --bg-tile Pictures/wallpaper.png
 
-exec --no-startup-id sh -c "xset s 900; xmodmap ~/.keyswapper"
+exec --no-startup-id sh -c "xset s noblank; xset s off; xset -dpms; xmodmap ~/.keyswapper"
 exec --no-startup-id nm-applet
 
 # start up ssh-agent

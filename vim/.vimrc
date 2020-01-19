@@ -14,7 +14,9 @@ Plug 'nvie/vim-flake8'
 Plug 'prettier/vim-prettier'
 Plug 'psf/black'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
@@ -26,6 +28,7 @@ let g:ctrlp_max_depth=40
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.tar.gz,*.zip,*.exe,*\\tmp\\*,.DS_Store,*/dist/*,*/node_modules/*,*/venv/*
 
 let g:NERDDefaultAlign = 'left'
+map <C-o> :NERDTreeToggle<CR>
 
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
