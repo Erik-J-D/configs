@@ -191,11 +191,13 @@ mode "$mode_system" {
 bindsym $mod+Insert mode "$mode_system"
 
 # xrandr calls for setting up external monitors
-set $mode_monitor (l) left of screen, (r) right of screen, (m) mirror, (p) projector only, (o) projector off
+set $mode_monitor (l)eft of screen, (r)ight of screen, (a)bove screen, (b)elow screen, (m)irror, (p)rojector only, (o)ff
 mode "$mode_monitor" {
     bindsym l exec xrandr --output $laptop_screen --auto --output $projector --auto --left-of $laptop_screen, mode "default"
     bindsym r exec xrandr --output $laptop_screen --auto --output $projector --auto --right-of $laptop_screen, mode "default"
     bindsym m exec xrandr --output $laptop_screen --auto --output $projector --auto --same-as $laptop_screen, mode "default"
+    bindsym a exec xrandr --output $laptop_screen --auto --output $projector --auto --above $laptop_screen, mode "default"
+    bindsym b exec xrandr --output $laptop_screen --auto --output $projector --auto --below $laptop_screen, mode "default"
     bindsym p exec xrandr --output $laptop_screen --off --output $projector --auto, mode "default"
     bindsym o exec xrandr --output $projector --off --output $laptop_screen --auto, mode "default"
 
