@@ -163,6 +163,7 @@ autocmd BufWritePre *.py execute ':Black'
 
 "Rust shit
 let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
 
 "Make quickfix window scale with amount of stuff, max 10 lines
 au FileType qf call AdjustWindowHeight(3, 10)
