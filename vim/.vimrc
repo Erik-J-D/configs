@@ -10,9 +10,10 @@ Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'leafoftree/vim-vue-plugin'
 Plug 'morhetz/gruvbox'
-Plug 'nvie/vim-flake8'
+Plug 'scrooloose/syntastic'
 Plug 'prettier/vim-prettier'
 Plug 'psf/black'
+Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shinchu/lightline-gruvbox.vim'
@@ -140,19 +141,28 @@ endfunction
 " Remove all trailing whitespace on save
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
+"Language specific shit
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 "Format scheme on save
 autocmd BufWritePre *.ss,*.scm call Preserve('normal gg=G')
 
-" JS shit
+"JS shit
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue Prettier
 
 "Python shit
-map <F3> :call Flake8()<CR>
 autocmd BufWritePre *.py execute ':Black'
-autocmd BufWritePost *.py call Flake8()
-let g:flake8_show_in_file=1
-let g:flake8_show_in_gutter=1
+
+"Rust shit
+let g:rustfmt_autosave = 1
 
 "Make quickfix window scale with amount of stuff, max 10 lines
 au FileType qf call AdjustWindowHeight(3, 10)
