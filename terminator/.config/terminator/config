@@ -1,4 +1,6 @@
 [global_config]
+  title_font = Noto Mono 9
+  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]
