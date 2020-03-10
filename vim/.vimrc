@@ -36,6 +36,16 @@ command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 syntax enable " syntax highlighting
 filetype indent plugin on
 
+set autoread " auto-read when a file is changed on disk outside vim
+if ! exists("g:CheckUpdateStarted")
+    let g:CheckUpdateStarted=1
+    call timer_start(1,'CheckUpdate')
+endif
+function! CheckUpdate(timer)
+    silent! checktime
+    call timer_start(1000,'CheckUpdate')
+endfunction
+
 set t_Co=256
 set background=light
 let g:gruvbox_italic=1
