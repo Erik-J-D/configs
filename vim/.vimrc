@@ -10,12 +10,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'leafoftree/vim-vue-plugin'
 Plug 'morhetz/gruvbox'
-Plug 'scrooloose/syntastic'
 Plug 'prettier/vim-prettier'
-Plug 'psf/black'
+Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -160,6 +160,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = 'python3'
 
 "Format scheme on save
 autocmd BufWritePre *.ss,*.scm call Preserve('normal gg=G')
