@@ -32,3 +32,7 @@ alias pserv='python3 -m http.server'
 alias svba='source venv/bin/activate'
 
 alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'
+
+# screen brightness
+# usage:   brightness 0.75    # where the number is between 0 and 1
+alias brightness='xrandr --output `xrandr | grep " connected" | cut -f1 -d " "` --brightness'

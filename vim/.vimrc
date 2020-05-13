@@ -116,7 +116,7 @@ nmap <F9> <esc>:tabe<cr>
 "remap jj to escape in insert mode
 inoremap jj <Esc>
 
-com! FormatJSON %!python -m json.tool
+com! FormatJSON %!python3 -m json.tool
 com! FormatXML %!xmllint --format
 
 
