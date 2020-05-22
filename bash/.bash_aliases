@@ -6,6 +6,8 @@ alias sl='ls'
 alias ll='ls --group-directories-first -lhF'
 alias la='ls --group-directories-first -AF'
 
+alias tree='tree -I "node_modules|venv"'
+
 # some colour things
 alias ls='ls --group-directories-first --color=auto -F'
 alias dir='dir --color=auto'
