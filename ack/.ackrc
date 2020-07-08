@@ -90,6 +90,9 @@
 # Node modules created by npm
 --ignore-directory=is:node_modules
 
+# Ignore Next build
+--ignore-directory=is:.next
+
 # CMake cache
 # http://www.cmake.org/
 --ignore-directory=is:CMakeFiles
