@@ -171,7 +171,7 @@ bindsym $mod+r mode "resize"
 # APP HOTKEYS
 
 bindsym $mod+ctrl+n exec "nemo --no-desktop"
-bindsym $mod+ctrl+k exec "keepass2"
+bindsym $mod+ctrl+k exec "keepassxc"
 bindsym $mod+ctrl+l exec "i3lock -i ~/Pictures/wallpaper.png"
 
 set $Locker i3lock -t -i ~/Pictures/wallpaper.png && sleep 1
@@ -213,6 +213,7 @@ for_window [class="(?i)matlab" title="^Classification"] floating enable
 for_window [class="(?i)tk" title="^Fig"] floating enable
 
 for_window [class="(?i)xmessage" title="^xmessage"] floating enable
+for_window [title="Microsoft Teams Notification"] floating enable
 
 # set primary gruvbox colorscheme colors
 set $bg #282828

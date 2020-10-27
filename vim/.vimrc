@@ -11,7 +11,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'leafoftree/vim-vue-plugin'
 Plug 'morhetz/gruvbox'
 Plug 'prettier/vim-prettier'
-Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'psf/black'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -79,6 +79,7 @@ set list
 set listchars=tab:▸·,trail:·
 
 set tabpagemax=100
+set showtabline=2
 
 autocmd FileType make       setlocal noexpandtab
 autocmd FileType golang     setlocal noexpandtab
