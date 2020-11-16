@@ -4,7 +4,7 @@ set $laptop_screen eDP-1
 set $projector DP-3
 set $projector_rate 60
 
-set $terminal terminator
+set $terminal kitty
 
 new_window pixel 4
 

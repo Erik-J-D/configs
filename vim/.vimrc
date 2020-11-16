@@ -50,7 +50,7 @@ set t_Co=256
 set background=light
 let g:gruvbox_italic=1
 
-if &term =~# '256color' && &term !~# '^screen' && &term !~# '^tmux'
+if &term !~# '^screen' && &term !~# '^tmux'
     set termguicolors
 endif
 
