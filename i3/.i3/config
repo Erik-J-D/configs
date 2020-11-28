@@ -171,7 +171,7 @@ bindsym $mod+r mode "resize"
 
 # APP HOTKEYS
 
-bindsym $mod+ctrl+n exec "nemo --no-desktop"
+bindsym $mod+ctrl+n exec "nautilus"
 bindsym $mod+ctrl+k exec "keepassxc"
 bindsym $mod+ctrl+l exec "i3lock -i ~/Pictures/wallpaper.png"
 
