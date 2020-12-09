@@ -57,7 +57,11 @@ endif
 colorscheme gruvbox
 
 " use system clipboard - vim 7.3.74+
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 
 set cindent
 set cinkeys-=0#
