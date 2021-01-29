@@ -1,3 +1,6 @@
+set t_u7=
+set t_RV=
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -55,7 +58,11 @@ endif
 colorscheme gruvbox
 
 " use system clipboard - vim 7.3.74+
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 
 set cindent
 set cinkeys-=0#
