@@ -44,4 +44,4 @@ fi
 # Reload Xresources
 if xhost >& /dev/null ; then xrdb ~/.Xresources ; fi
 
-export PATH=$PATH:~/.local/bin/:~/.yarn/bin:~/.scripts
+export PATH=$PATH:./go/bin/:~/.local/bin/:~/.yarn/bin:~/.scripts

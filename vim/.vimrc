@@ -6,20 +6,16 @@ endif
 
 call plug#begin('~/.vim/bundle')
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'derekelkins/agda-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'leafoftree/vim-vue-plugin'
 Plug 'morhetz/gruvbox'
-Plug 'prettier/vim-prettier'
 Plug 'psf/black'
-Plug 'derekelkins/agda-vim'
-Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " set up ctrl-p binding
@@ -30,6 +26,7 @@ let g:ctrlp_max_depth=40
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.tar.gz,*.zip,*.exe,*\\tmp\\*,.DS_Store,*/dist/*,*/node_modules/*,*/venv/*
 
 let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
 map <C-o> :NERDTreeToggle<CR>
 
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
@@ -49,7 +46,7 @@ endfunction
 
 set t_Co=256
 set background=light
-let g:gruvbox_italic=1
+let g:gruvbox_italic=0
 
 if &term !~# '^screen' && &term !~# '^tmux'
     set termguicolors
@@ -64,18 +61,18 @@ set cindent
 set cinkeys-=0#
 set indentkeys-=0#
 
-set smartcase   " search intelligently
-set hlsearch  " highlight searches, and search incrementaly
+set smartcase " search intelligently
+set hlsearch " highlight searches, and search incrementaly
 set incsearch
 
 map <F2> <esc>:noh<cr><esc>
 set wrapscan
 
-set tabstop=4    " set tab to 4 spaces
+set tabstop=4 " set tab to 4 spaces
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-highlight SpecialKey ctermfg=2  " highlight actual tabs
+highlight SpecialKey ctermfg=grey guifg=grey70  " highlight actual tabs
 set list
 set listchars=tab:▸·,trail:·
 
@@ -84,21 +81,22 @@ set showtabline=2
 
 autocmd FileType make       setlocal noexpandtab
 autocmd FileType golang     setlocal noexpandtab
-autocmd Filetype html       setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype agda       setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype css        setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype ruby       setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype html       setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=0 expandtab
 autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype ruby       setlocal tabstop=2 shiftwidth=2 expandtab
 
 set number
 set ruler
 set cursorline
 
+set autowrite
+
 set noeb " turn off notifications
 set visualbell
 set t_vb=
-
-set backspace=indent,eol,start " backspace continues on previous line
 
 set nobackup  " get rid of swap files. we have git.
 set nowb
@@ -106,6 +104,7 @@ set noswapfile
 
 set so=10 " leave some text at the top / bottom of the screen
 
+set backspace=indent,eol,start " backspace continues on previous line
 set whichwrap+=<,>,h,l,[,] " wrap arrow keys around lines
 
 imap <F1> <nop>
@@ -121,31 +120,24 @@ inoremap jj <Esc>
 com! FormatJSON %!python3 -m json.tool
 com! FormatXML %!xmllint --format
 
-
 " Restore cursor position, window position, and last search after running a
 " command.
 function! Preserve(command)
   " Save the last search.
   let search = @/
-
   " Save the current cursor position.
   let cursor_position = getpos('.')
-
   " Save the current window position.
   normal! H
   let window_position = getpos('.')
   call setpos('.', cursor_position)
-
   " Execute the command.
   execute a:command
-
   " Restore the last search.
   let @/ = search
-
   " Restore the previous window position.
   call setpos('.', window_position)
   normal! zt
-
   " Restore the previous cursor position.
   call setpos('.', cursor_position)
 endfunction
@@ -154,34 +146,31 @@ endfunction
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
 "Language specific shit
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_typescript_checkers=['eslint']
-let g:syntastic_python_python_exec = 'python3'
 
 "Format scheme on save
 autocmd BufWritePre *.ss,*.scm call Preserve('normal gg=G')
 
-"JS shit
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue Prettier
-
 "Python shit
 autocmd BufWritePre *.py execute ':Black'
 
-"Rust shit
-let g:rustfmt_autosave = 1
-let g:rustfmt_emit_files = 1
+"Golang
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+
 
 "Make quickfix window scale with amount of stuff, max 10 lines
-au FileType qf call AdjustWindowHeight(3, 10)
+au FileType qf call AdjustWindowHeight(3, 15)
 function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
