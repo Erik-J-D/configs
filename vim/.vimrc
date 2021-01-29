@@ -170,11 +170,12 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
-
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
-
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 
 "Make quickfix window scale with amount of stuff, max 10 lines
 au FileType qf call AdjustWindowHeight(3, 15)
