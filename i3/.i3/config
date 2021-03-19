@@ -189,7 +189,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Insert mode "$mode_system"
+bindsym $mod+Delete mode "$mode_system"
 
 # xrandr calls for setting up external monitors
 set $mode_monitor (l)eft of screen, (r)ight of screen, (a)bove screen, (b)elow screen, (m)irror, (p)rojector only, (o)ff
