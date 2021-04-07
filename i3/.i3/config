@@ -23,7 +23,7 @@ gaps outer  5
 new_window pixel 4
 
 # wallpaper
-exec --no-startup-id feh --bg-scale ./Shell/contents/images/5120x2880.jpg
+exec --no-startup-id feh --bg-center ~/Pictures/wallpaper.jpg
 
 # Load xresources changes.
 exec --no-startup-id test -f ~/.Xresources && xrdb -merge ~/.Xresources
