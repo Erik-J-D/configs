@@ -18,8 +18,6 @@ set $projector_rate 60
 
 set $terminal kitty
 
-gaps inner  20
-gaps outer  5
 new_window pixel 4
 
 # wallpaper

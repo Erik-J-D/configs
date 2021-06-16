@@ -14,6 +14,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'morhetz/gruvbox'
+Plug 'prettier/vim-prettier'
 Plug 'psf/black'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -153,6 +154,11 @@ endfunction
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
 "Language specific shit
+
+" JS
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#config#tab_width = 2
 
 "Format scheme on save
 autocmd BufWritePre *.ss,*.scm call Preserve('normal gg=G')
