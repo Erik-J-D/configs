@@ -13,21 +13,28 @@ Plug 'derekelkins/agda-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'morhetz/gruvbox'
 Plug 'prettier/vim-prettier'
 Plug 'psf/black'
+Plug 'quramy/tsuquyomi'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " set up ctrl-p binding
+" let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.tar.gz,*.zip,*.exe,*\\tmp\\*,.DS_Store,*/dist/*,*/node_modules/*,*/venv/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*.tar.gz,*.zip,*.exe,*\\tmp\\*,.DS_Store,*/dist/*,*/node_modules/*,*/venv/*,*/\.git/*
 
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
