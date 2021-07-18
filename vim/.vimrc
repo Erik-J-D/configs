@@ -17,7 +17,6 @@ Plug 'morhetz/gruvbox'
 Plug 'prettier/vim-prettier'
 Plug 'psf/black'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'tpope/vim-eunuch'
 call plug#end()
@@ -31,7 +30,29 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.tar.gz,*.zip,*.exe,*\\tmp\\*,.D
 
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
-map <C-o> :NERDTreeToggle<CR>
+
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
+noremap <silent> <C-o> :call ToggleNetrw()<CR>
+
+let g:netrw_banner = 0        " remove banner
+let g:netrw_browse_split = 3  " open in new tab (4 - previous window)
+let g:netrw_winsize = 25      " 25% of page
+let g:netrw_liststyle = 3     " tree mode
 
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
