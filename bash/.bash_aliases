@@ -18,7 +18,7 @@ alias egrep='egrep --color=auto'
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
 
 # Open multiple files as tabs
-alias vim='vim -p'
+alias vim='nvim -p'
 
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'

@@ -25,6 +25,3 @@ done
 
 # Do Xresource loading
 xrdb ~/.Xresources
-
-# Install vim plugins
-vim +PlugInstall +qall
