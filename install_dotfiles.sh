@@ -25,3 +25,11 @@ done
 
 # Do Xresource loading
 xrdb ~/.Xresources
+
+# pip install 'python-lsp-server[all]' pyls-isort pylsp-mypy
+
+# GO111MODULE=on go get golang.org/x/tools/gopls@latest
+# OR
+# go get -u golang.org/x/tools/...
+
+# npm install -g typescript typescript-language-server

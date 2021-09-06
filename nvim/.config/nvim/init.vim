@@ -145,6 +145,9 @@ let g:lightline = {
       \ },
       \ }
 
+" autoformat on save, 3s timeout
+autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 3000)
+
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
