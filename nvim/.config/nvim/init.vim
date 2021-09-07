@@ -16,6 +16,9 @@ call plug#begin('~/.nvim/bundle')
   Plug 'kien/rainbow_parentheses.vim'
   Plug 'morhetz/gruvbox'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
   Plug 'scrooloose/nerdcommenter'
   Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'tpope/vim-eunuch'
@@ -145,8 +148,13 @@ let g:lightline = {
       \ },
       \ }
 
+" TODO: make eslint / prettier work with LSP stuff
 " autoformat on save, 3s timeout
 autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 3000)
+autocmd BufWritePre *\(.js\|.ts\|.jsx\|.tsx)\@<! vim.lsp.buf.formatting_sync(nil, 3000)
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#config#tab_width = 2
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
