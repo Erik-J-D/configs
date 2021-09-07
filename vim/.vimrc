@@ -9,13 +9,13 @@ endif
 
 call plug#begin('~/.vim/bundle')
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dense-analysis/ale', { 'tag': 'v3.1.0'}
 Plug 'derekelkins/agda-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'morhetz/gruvbox'
-Plug 'prettier/vim-prettier'
 Plug 'psf/black'
 Plug 'quramy/tsuquyomi'
 Plug 'scrooloose/nerdcommenter'
@@ -183,10 +183,16 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
 "Language specific shit
 
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+
 " JS
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#config#tab_width = 2
+let g:ale_fixers = {
+\  'javascript': ['prettier', 'eslint'],
+\  'typescript': ['prettier', 'eslint'],
+\  'css': ['prettier'],
+\}
 
 "Format scheme on save
 autocmd BufWritePre *.ss,*.scm call Preserve('normal gg=G')
