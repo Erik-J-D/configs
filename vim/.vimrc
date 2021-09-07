@@ -18,8 +18,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'morhetz/gruvbox'
 Plug 'psf/black'
 Plug 'quramy/tsuquyomi'
+Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 call plug#end()
@@ -182,6 +184,15 @@ endfunction
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
 "Language specific shit
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✘'
@@ -196,6 +207,10 @@ let g:ale_fixers = {
 
 "Format scheme on save
 autocmd BufWritePre *.ss,*.scm call Preserve('normal gg=G')
+
+"Rust shit
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
 
 "Python shit
 autocmd BufWritePre *.py execute ':Black'
