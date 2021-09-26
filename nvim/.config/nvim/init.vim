@@ -16,12 +16,20 @@ call plug#begin('~/.nvim/bundle')
   Plug 'kien/rainbow_parentheses.vim'
   Plug 'morhetz/gruvbox'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'preservim/nerdtree'
   Plug 'scrooloose/nerdcommenter'
   Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-vinegar'
 call plug#end()
+
+nnoremap <C-o> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " set up ctrl-p binding
 " let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
@@ -42,8 +50,16 @@ command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 syntax enable " syntax highlighting
 filetype plugin indent on
 
-" auto-read when a file is changed on disk outside vim
-set autoread | au CursorHold * checktime | call feedkeys("lh")
+set autoread " auto-read when a file is changed on disk outside vim
+if ! exists("g:CheckUpdateStarted")
+    let g:CheckUpdateStarted=1
+    call timer_start(1,'CheckUpdate')
+endif
+function! CheckUpdate(timer)
+    silent! checktime
+    call timer_start(1000,'CheckUpdate')
+endfunction
+
 
 set t_Co=256
 set background=light
@@ -52,7 +68,7 @@ if &term !~# '^screen' && &term !~# '^tmux'
 endif
 colorscheme gruvbox
 
-" use system clipboard - vim 7.3.74+
+" use system clipboard
 if system('uname -s') == "Darwin\n"
   set clipboard=unnamed "OSX
 else
@@ -186,7 +202,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'gopls', 'tsserver' }
+local servers = { 'pylsp', 'gopls', 'tsserver', 'html', 'cssls', 'vimls'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
