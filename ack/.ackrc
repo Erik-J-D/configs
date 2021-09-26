@@ -15,6 +15,11 @@
 
 
 ### Directories to ignore
+# out/
+--ignore-directory=is:out
+
+# dist/
+--ignore-directory=is:dist
 
 # Python
 --ignore-directory=is:venv
@@ -131,6 +136,10 @@
 # JS and CSS source maps
 --ignore-file=match:/[.]js[.]map$/
 --ignore-file=match:/[.]css[.]map$/
+
+# Built JS files
+--ignore-file=match:/[.]chunk[.]js$/
+--ignore-file=match:/[.]bundle[.]js$/
 
 # PDFs, because they pass Perl's -T detection
 --ignore-file=ext:pdf
