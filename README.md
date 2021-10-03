@@ -22,7 +22,7 @@ $ raco pkg install racket-langserver
 $ npm i -g vscode-langservers-extracted  # html and css
 ```
 
-### caps -> ctrl
+### caps 🡒 ctrl
 
 ```
 yay -S interception-tools interception-caps2esc

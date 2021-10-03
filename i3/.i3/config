@@ -20,32 +20,20 @@ set $terminal kitty
 
 new_window pixel 4
 
+# AUTOEXEC
+
+exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
+exec --no-startup-id i3-msg 'workspace 2; exec thunderbird; workspace 1'
+assign [class="Slack"] 3
+exec slack
+assign [class="SpiderOakONE"] 10
+exec SpiderOakONE
+
+exec --no-startup-id sh -c "xset s noblank; xset s off; xset -dpms;"
+exec --no-startup-id nm-applet
+
 # wallpaper
 exec --no-startup-id feh --bg-center ~/Pictures/wallpaper.jpg
-
-# Load xresources changes.
-exec --no-startup-id test -f ~/.Xresources && xrdb -merge ~/.Xresources
-
-# Plasma compatibility improvements
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-
-for_window [class="yakuake"] floating enable
-for_window [class="kruler"] floating enable
-for_window [class="systemsettings"] floating enable
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
-for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
-no_focus [class="plasmashell" window_type="notification"]
-
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
 # SETTINGS
 
@@ -62,8 +50,21 @@ bindsym $mod+Return exec $terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# bindsym $mod+d exec dmenu_run
+# rofi
 bindsym $mod+d exec --no-startup-id rofi -combi-modi drun#ssh#window -theme gruvbox-light -show combi
+
+# bind volume buttons
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/pactl_volume.sh +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/pactl_volume.sh -5%
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/pactl_volume.sh M
+
+# Key mappings
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
+bindsym Print exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T-screenshot.png
 
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5%
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5%
@@ -149,7 +150,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -173,9 +174,25 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # APP HOTKEYS
-bindsym $mod+ctrl+n exec "nautilus"
+bindsym $mod+ctrl+n exec "pcmanfm"
 bindsym $mod+ctrl+k exec "keepassxc"
-bindsym $mod+ctrl+l exec "loginctl lock-session"
+bindsym $mod+ctrl+l exec "i3lock -i ~/Pictures/wallpaper.png"
+
+set $Locker i3lock -t -i ~/Pictures/wallpaper.png && sleep 1
+
+set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true, mode "default"
+    bindsym h exec --no-startup-id $Locker && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Hibernate" boolean:true, mode "default"
+    bindsym r exec --no-startup-id dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true, mode "default"
+    bindsym Shift+s exec --no-startup-id dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Delete mode "$mode_system"
 
 # xrandr calls for setting up external monitors
 set $mode_monitor (l)eft of screen, (r)ight of screen, (a)bove screen, (b)elow screen, (m)irror, (p)rojector only, (o)ff
@@ -222,6 +239,24 @@ set $base0D #076678
 set $base0E #8f3f71
 set $base0F #d65d0e
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  status_command i3status -t
+  separator_symbol "⋮"
+  colors {
+        background $base00
+        separator  $base01
+        statusline $base04
+
+        # State             Border  BG      Text
+        focused_workspace   $base05 $base0D $base00
+        active_workspace    $base05 $base03 $base00
+        inactive_workspace  $base03 $base01 $base05
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base00 $base0A $base00
+    }
+}
 
 # Property Name         Border  BG      Text    Indicator Child Border
 client.focused          $base05 $base0D $base00 $base0D $base0C

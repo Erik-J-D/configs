@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 SINK=$(pacmd list-sinks | grep "index:" | grep '*' | awk '{print $3}')
 
@@ -11,4 +11,3 @@ if [ "$1" != "M" ]; then
 else
   pactl set-sink-mute "$SINK" toggle
 fi
-
