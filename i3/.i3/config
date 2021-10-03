@@ -1,19 +1,7 @@
-# For use with KDE Plasma
-#
-# Add to /usr/share/xsessions/plasma-i3.desktop :
-#
-# [Desktop Entry]
-# Type=XSession
-# Exec=env KDEWM=/usr/bin/i3 /usr/bin/startplasma-x11
-# DesktopNames=KDE
-# Name=Plasma with i3
-# Comment=Plasma with i3
-
-
 set $mod Mod4
 
 set $laptop_screen eDP-1
-set $projector DP-3
+set $projector DP-1-1
 set $projector_rate 60
 
 set $terminal kitty
