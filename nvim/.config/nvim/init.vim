@@ -11,6 +11,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 call plug#begin('~/.nvim/bundle')
+  Plug 'Olical/conjure', {'tag': 'v4.24.0'}
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'kien/rainbow_parentheses.vim'
@@ -21,6 +22,7 @@ call plug#begin('~/.nvim/bundle')
   Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
+  Plug 'wlangstroth/vim-racket'
 call plug#end()
 
 nnoremap <C-o> :NERDTreeToggle<CR>

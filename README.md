@@ -26,6 +26,6 @@ $ npm i -g vscode-langservers-extracted  # html and css
 
 ```
 yay -S interception-tools interception-caps2esc
-sudo cp ./udevmon/udevmon.yaml /etc/interception/udevmon.d/udevmon.yaml
+sudo cp ./udevmon/.udevmon.yaml /etc/interception/udevmon.d/udevmon.yaml
 sudo systemctl enable --now udevmon
 ```
