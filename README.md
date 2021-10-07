@@ -24,6 +24,8 @@ $ npm i -g vscode-langservers-extracted  # html and css
 
 ### caps 🡒 ctrl
 
+Double check location of udevmon yaml file with `udevmon -h`
+
 ```
 yay -S interception-tools interception-caps2esc
 sudo cp ./udevmon/.udevmon.yaml /etc/interception/udevmon.d/udevmon.yaml
