@@ -38,7 +38,6 @@ gettext
 gimp
 git
 go
-gparted
 gpicview
 grep
 gtk3-nocsd-git
@@ -94,6 +93,7 @@ pavucontrol
 pcmanfm-gtk3
 pcsx2
 pdfgrep
+picom
 pkgconf
 pulseaudio
 pulseaudio-jack
