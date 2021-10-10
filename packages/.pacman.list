@@ -39,7 +39,9 @@ gimp
 git
 go
 gparted
+gpicview
 grep
+gtk3-nocsd-git
 gvfs-smb
 gzip
 hexchat
@@ -67,12 +69,10 @@ linux
 linux-firmware
 luit
 lvm2
-lxde-common
-lxsession
 lynx
 m4
 make
-neofetch
+man-db
 neovim
 netctl
 network-manager-applet
@@ -91,7 +91,7 @@ pacman-contrib
 pandoc-bin
 patch
 pavucontrol
-pcmanfm
+pcmanfm-gtk3
 pcsx2
 pdfgrep
 pkgconf
@@ -145,7 +145,7 @@ vlc
 wget
 which
 wmctrl
-wpa_supplicant
+xarchiver
 xclip
 xdg-user-dirs
 xf86-video-vesa

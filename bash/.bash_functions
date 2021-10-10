@@ -24,10 +24,15 @@ function vack() {
     vim $(ack -l "$*")
 }
 
-# remove .pyc, .pyo, pycache
+# remove .pyc, .pyo, caches
 function pyclean () {
     find . -type f -name "*.py[co]" -delete
+    find . -path '*/__pycache__/*' -delete
     find . -type d -name "__pycache__" -delete
+    find . -path '*/.pytest_cache/*' -delete
+    find . -type d -name ".pytest_cache" -delete
+    find . -path '*/.mypy_cache/*' -delete
+    find . -type d -name ".mypy_cache" -delete
 }
 
 function decrypt_pdf() {
