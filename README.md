@@ -2,7 +2,7 @@
 
 ## Installation
 
-Install `git` and `stow`o
+Install `git` and `stow`
 
 ```
 stow */

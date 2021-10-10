@@ -39,6 +39,9 @@ bindsym $mod+Shift+q kill
 # rofi
 bindsym $mod+d exec --no-startup-id rofi -combi-modi drun#ssh#window -theme gruvbox-light -show combi
 
+# clear dunst notifications
+bindsym ctrl+space exec --no-startup-id dunstctl close-all
+
 # bind volume buttons
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/pactl_volume.sh +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/pactl_volume.sh -5%
@@ -98,6 +101,8 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+for_window [title="^zoom$"] floating enable
 
 # focus the parent container
 bindsym $mod+a focus parent
