@@ -20,7 +20,6 @@ docker-compose
 dunst
 efibootmgr
 eog
-evince-no-gnome
 fakeroot
 feh
 file
@@ -39,7 +38,6 @@ gimp
 git
 go
 grep
-gtk3-nocsd-git
 gzip
 helm-synth
 hexchat
@@ -47,7 +45,6 @@ htop
 hugo
 i3-gaps
 i3blocks
-i3lock-color
 i3status
 inkscape
 intel-ucode
@@ -61,7 +58,6 @@ libtool
 lightdm
 lightdm-gtk-greeter
 lightdm-webkit2-greeter
-lightdm-webkit2-theme-material2
 linux
 linux-firmware
 lvm2
@@ -76,13 +72,10 @@ npm
 ntfs-3g
 nvidia
 nvidia-settings
-nvidia-system-monitor-qt
 nvtop
-octopi
 p7zip
 pacman
 pacman-contrib
-pandoc-bin
 patch
 pavucontrol
 pcmanfm-gtk3
@@ -94,7 +87,6 @@ postgresql-libs
 pulseaudio
 pulseaudio-alsa
 pulseaudio-jack
-pureref
 python
 python-black
 python-pip
@@ -108,21 +100,14 @@ rofi
 rsync
 scrot
 simple-scan
-skypeforlinux-stable-bin
-slack-desktop
-spicetify-cli
-spideroak-one
-spotify
 sqlitebrowser
 squashfs-tools
 steam
 stow
 sudo
-symlinks
 texlive-core
 the_silver_searcher
 thunderbird
-timeshift
 tk
 tmux
 torbrowser-launcher
@@ -132,8 +117,6 @@ ttf-fira-code
 ttf-fira-mono
 ttf-font-awesome
 ttf-hack
-ttf-noto-fonts-simple
-ttf-windows
 unrar
 unzip
 usbutils
@@ -162,5 +145,3 @@ xorg-xrdb
 xorg-xset
 xorg-xwininfo
 xournalpp
-yay-bin
-zoom
