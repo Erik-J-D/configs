@@ -37,6 +37,6 @@ alias vimflake='vim $(flake8 | cut -d: -f 1 | uniq)'
 
 # screen brightness
 # usage:   brightness 0.75    # where the number is between 0 and 1
-alias brightness='xrandr --output `xrandr | grep " connected" | cut -f1 -d " "` --brightness'
+alias brightness='xrandr --output `xrandr | grep " connected" | cut -f1 -d " " | grep "^e" | head -1` --brightness'
 
 alias weather="clear; printf %b '\e]11;#778\a'; curl wttr.in"

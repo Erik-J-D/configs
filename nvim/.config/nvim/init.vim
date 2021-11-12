@@ -123,6 +123,8 @@ set so=10 " leave some text at the top / bottom of the screen
 set backspace=indent,eol,start " backspace continues on previous line
 set whichwrap+=<,>,h,l,[,] " wrap arrow keys around lines
 
+set mouse=a
+
 nmap <F7> <esc>:tabp<cr>  " map F7 F8 and F9 to previous, next, and new tab
 nmap <F8> <esc>:tabn<cr>
 nmap <F9> <esc>:tabe<cr>

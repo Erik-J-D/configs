@@ -95,9 +95,9 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-jack
 pureref
+python
 python-black
 python-pip
-python-pipenv
 python-rdflib
 qbittorrent
 qpdf
@@ -127,6 +127,7 @@ tk
 tmux
 torbrowser-launcher
 tree
+ttf-droid
 ttf-fira-code
 ttf-fira-mono
 ttf-font-awesome
@@ -153,9 +154,11 @@ xorg-server
 xorg-server-devel
 xorg-server-xephyr
 xorg-xauth
+xorg-xbacklight
 xorg-xhost
 xorg-xprop
 xorg-xrandr
+xorg-xrdb
 xorg-xset
 xorg-xwininfo
 xournalpp
