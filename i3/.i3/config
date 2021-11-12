@@ -10,13 +10,13 @@ new_window pixel 4
 
 # AUTOEXEC
 assign [class="SpiderOakONE"] 10
-exec SpiderOakONE
+exec --no-startup-id SpiderOakONE
 
 exec --no-startup-id sh -c "xset s noblank; xset s off; xset -dpms;"
 exec --no-startup-id nm-applet
 
 # Random wallpaper every 2 minutes
-exec --no-startup-id sh -c "while true; do sleep 120; feh --bg-fill --randomize ~/Pictures/Wallpapers/Beksinski/*; done"
+exec --no-startup-id sh -c "while true; feh --bg-fill --randomize ~/Pictures/Wallpapers/Beksinski/*; do sleep 120; done"
 
 # compositor
 exec --no-startup-id picom -b --config ~/.config/picom.conf
@@ -44,8 +44,8 @@ bindsym ctrl+space exec --no-startup-id dunstctl close-all
 
 # bind volume buttons
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -169,12 +169,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+set $Locker .scripts/lock.sh && sleep 1
+
 # APP HOTKEYS
 bindsym $mod+ctrl+n exec "pcmanfm"
 bindsym $mod+ctrl+k exec "keepassxc"
-bindsym $mod+ctrl+l exec "i3lock -t -i ~/Pictures/wallpaper.png"
-
-set $Locker i3lock -t -i ~/Pictures/wallpaper.png && sleep 1
+bindsym $mod+ctrl+l exec $Locker
 
 set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -208,16 +208,6 @@ mode "$mode_monitor" {
 bindsym $mod+Shift+p mode "$mode_monitor"
 
 # set primary gruvbox colorscheme colors
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-
 set $base00 #f9f5d7
 set $base01 #ebdbb2
 set $base02 #d5c4a1
