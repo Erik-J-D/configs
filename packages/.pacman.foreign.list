@@ -1,7 +1,9 @@
 evince-no-gnome
+font-manager
 gtk3-nocsd-git
 i3lock-color
 lightdm-webkit2-theme-material2
+nerd-fonts-fira-code
 nvidia-system-monitor-qt
 octopi
 pandoc-bin

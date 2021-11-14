@@ -231,7 +231,7 @@ bar {
   status_command i3status
   separator_symbol "⋮"
   tray_padding 0
-  font pango:Fira Code, Droid Sans Mono, DejaVu Sans Mono, monospace 12
+  font pango:FiraCode Nerd Font, Droid Sans Mono, DejaVu Sans Mono, monospace 12
   colors {
         background $base00
         separator  $base01
