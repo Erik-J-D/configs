@@ -21,7 +21,7 @@ function viewmd() {
 }
 
 function vack() {
-    vim $(ack -l "$*")
+    vim $(ack -l "$@")
 }
 
 # remove .pyc, .pyo, caches

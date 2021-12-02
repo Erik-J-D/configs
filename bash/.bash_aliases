@@ -1,4 +1,3 @@
-alias pf='pip freeze | grep -v "pkg-resources==0.0.0" | grep -v "ubuntu-drivers-common==0.0.0"'
 alias o='xdg-open'
 alias :q='exit'
 
@@ -26,7 +25,6 @@ alias getclip='xclip -selection clipboard -o'
 alias whatami='echo $TERM'
 
 # git
-alias gpom='git push origin master'
 alias gd='git diff'
 alias gits='git status'
 

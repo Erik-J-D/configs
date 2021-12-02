@@ -20,6 +20,8 @@ $ go get -u golang.org/x/tools/...
 $ raco pkg install racket-langserver
 
 $ npm i -g vscode-langservers-extracted  # html and css
+
+$ rustup component add rls rust-analysis rust-src
 ```
 
 ### caps 🡒 ctrl

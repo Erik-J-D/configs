@@ -12,6 +12,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin('~/.nvim/bundle')
   Plug 'Olical/conjure', {'tag': 'v4.24.0'}
+  Plug 'ap/vim-css-color'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'kien/rainbow_parentheses.vim'
@@ -49,10 +50,6 @@ let g:NERDSpaceDelims = 1
 
 command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
-syntax enable " syntax highlighting
-filetype plugin indent on
-
-set autoread " auto-read when a file is changed on disk outside vim
 if ! exists("g:CheckUpdateStarted")
     let g:CheckUpdateStarted=1
     call timer_start(1,'CheckUpdate')
@@ -63,11 +60,8 @@ function! CheckUpdate(timer)
 endfunction
 
 
-set t_Co=256
 set background=light
-if &term !~# '^screen' && &term !~# '^tmux'
-    set termguicolors
-endif
+set termguicolors
 colorscheme gruvbox
 
 " use system clipboard
@@ -82,8 +76,6 @@ set cinkeys-=0#
 set indentkeys-=0#
 
 set smartcase " search intelligently
-set hlsearch " highlight searches, and search incrementaly
-set incsearch
 set wrapscan
 map <F1> <esc>:noh<cr><esc>
 
@@ -93,7 +85,7 @@ set shiftwidth=4
 set expandtab
 highlight SpecialKey ctermfg=grey guifg=grey70  " highlight actual tabs
 set list
-set listchars=tab:▸·,trail:·
+set listchars=tab:▸·,trail:·,nbsp:+
 
 set tabpagemax=100 " Allow up to 100 files to be opened with [n]vim -p
 set showtabline=2  " always show tabline
@@ -105,7 +97,6 @@ autocmd Filetype html       setlocal softtabstop=2 shiftwidth=2
 autocmd Filetype javascript setlocal softtabstop=2 shiftwidth=2
 
 set number
-set ruler
 set cursorline
 
 set autowrite
@@ -120,7 +111,6 @@ set noswapfile
 
 set so=10 " leave some text at the top / bottom of the screen
 
-set backspace=indent,eol,start " backspace continues on previous line
 set whichwrap+=<,>,h,l,[,] " wrap arrow keys around lines
 
 set mouse=a
@@ -149,7 +139,6 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 "lightline
-set laststatus=2
 set noshowmode
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
@@ -205,7 +194,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'gopls', 'html', 'cssls', 'vimls', 'jsonls', 'racket_langserver'}
+local servers = { 'pylsp', 'gopls', 'html', 'cssls', 'vimls', 'jsonls', 'racket_langserver', 'rls'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
