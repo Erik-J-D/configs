@@ -6,6 +6,6 @@
 . ~/.zsh_environment
 
 # Per computer extra settings
-if [ -f ~/.zsh_$HOSTNAME ]; then
-    . ~/.zsh_$HOSTNAME
+if [ -f ~/.zsh_$HOST ]; then
+    . ~/.zsh_$HOST
 fi

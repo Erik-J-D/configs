@@ -2,6 +2,7 @@ autoload -Uz compinit && compinit
 autoload colors && colors
 autoload -Uz vcs_info
 
+# History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -15,6 +16,8 @@ setopt AUTOCD
 setopt EXTENDEDGLOB
 setopt GLOBDOTS
 setopt PROMPT_SUBST
+
+# make tab-complete not guess what I want
 setopt NOAUTOMENU
 setopt NOMENUCOMPLETE
 
