@@ -37,6 +37,7 @@ precmd() {
 
 # explicitly set key bindings - home, end, del, etc didn't work ootb
 typeset -g -A key
+WORDCHARS=${WORDCHARS/\/}  # split paths on / for definition of a word
 
 key[Home]="${terminfo[khome]}"
 key[End]="${terminfo[kend]}"
