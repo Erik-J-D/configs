@@ -12,32 +12,36 @@ setopt HIST_IGNORE_SPACE
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
 
-setopt AUTOCD
-setopt EXTENDEDGLOB
-setopt GLOBDOTS
-setopt PROMPT_SUBST
+setopt AUTOCD  # cd if only command is a path
+setopt EXTENDEDGLOB  # add negation to matching
+setopt GLOBDOTS  # don't ignore dotfiles
+setopt PROMPT_SUBST  # do parameter expansion on PROMPT
 
 # make tab-complete not guess what I want
 setopt NOAUTOMENU
 setopt NOMENUCOMPLETE
 
-bindkey -e
+bindkey -e  # emacs mode; vim was weird
 
+# define colors as variables
 for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
     eval $COLOR='%{$fg_no_bold[${(L)COLOR}]%}'
     eval B_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
 done
 eval RESET='%{$reset_color%}'
 
-zstyle ':vcs_info:git:*' formats '(%b)'
+zstyle ':vcs_info:git:*' formats '(%b)'  # format for vcs branch
+
+# Generate a new 'PROMPT' before drawing PROMPT
 precmd() {
     vcs_info
     PROMPT="%(?.${B_GREEN}✓.${B_RED}✗)${B_BLUE} %n@%m ${B_GREEN}%~ ${B_YELLOW}${vcs_info_msg_0_} ${B_MAGENTA}"$'\n'"$ ${RESET}"
 }
 
+WORDCHARS=${WORDCHARS/\/}  # split paths on / for definition of a word
+
 # explicitly set key bindings - home, end, del, etc didn't work ootb
 typeset -g -A key
-WORDCHARS=${WORDCHARS/\/}  # split paths on / for definition of a word
 
 key[Home]="${terminfo[khome]}"
 key[End]="${terminfo[kend]}"
@@ -66,6 +70,7 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
 
+# Add ctrl-left/right to move by a word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
