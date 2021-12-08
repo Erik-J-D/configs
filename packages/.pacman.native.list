@@ -20,6 +20,7 @@ docker-compose
 dunst
 efibootmgr
 eog
+exa
 fakeroot
 feh
 file
@@ -111,7 +112,6 @@ thunderbird
 tk
 tmux
 torbrowser-launcher
-tree
 ttf-droid
 ttf-fira-code
 ttf-fira-mono

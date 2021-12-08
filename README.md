@@ -24,7 +24,7 @@ $ npm i -g vscode-langservers-extracted  # html and css
 $ rustup component add rls rust-analysis rust-src
 ```
 
-### caps 🡒 ctrl
+### caps -> ctrl
 
 Double check location of udevmon yaml file with `udevmon -h`
 

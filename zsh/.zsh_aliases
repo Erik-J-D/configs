@@ -1,37 +1,48 @@
-alias o='xdg-open'
+# OS specific commands
+case "$OSTYPE" in
+  darwin*)
+    # Mac stuff here
+  ;;
+  linux*)
+    # Linux stuff here
+    alias o='xdg-open'
+
+    # clipboard
+    alias setclip='xclip -selection c'
+    alias getclip='xclip -selection clipboard -o'
+
+    # screen brightness
+    # usage:   brightness 0.75    # where the number is between 0 and 1
+    alias brightness='xrandr --output `xrandr | grep " connected" | cut -f1 -d " " | grep "^e" | head -1` --brightness'
+
+  ;;
+  dragonfly*|freebsd*|netbsd*|openbsd*)
+    # BSD stuff here
+  ;;
+esac
+
 alias :q='exit'
 
 alias sl='ls'
-alias ll='ls --group-directories-first -lhF'
-alias la='ls --group-directories-first -AF'
+alias ls='exa -F --group-directories-first'
+alias ll='exa -laF --git --group-directories-first'
+alias la='exa -aF --group-directories-first'
+alias tree='exa --tree -F'
 
 alias pserv='python3 -m http.server'
-
-alias tree='tree -I "node_modules|venv"'
 
 alias whatami='echo $TERM'
 
 # zsh history is real dumb
 alias history='history -E 1'
 
-# some colour things
-alias ls='ls --group-directories-first --color=auto -F'
 alias grep='grep --color=auto'
 
 # Open multiple files as tabs
 alias vim='nvim -p'
 
-# clipboard
-alias setclip='xclip -selection c'
-alias getclip='xclip -selection clipboard -o'
-
 # git
 alias gd='git diff'
 alias gits='git status'
-
-# screen brightness
-# usage:   brightness 0.75    # where the number is between 0 and 1
-alias brightness='xrandr --output `xrandr | grep " connected" | cut -f1 -d " " | grep "^e" | head -1` --brightness'
-
 # weather
 alias weather="clear; printf %b '\e]11;#778\a'; curl wttr.in"
