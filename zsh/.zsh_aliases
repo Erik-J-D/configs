@@ -39,7 +39,9 @@ alias history='history -E 1'
 alias grep='grep --color=auto'
 
 # Open multiple files as tabs
-alias vim='nvim -p'
+alias  vi='nvim -p'
+alias  vim='nvim -p'
+alias nvim='nvim -p'
 
 # git
 alias gd='git diff'
