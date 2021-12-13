@@ -33,3 +33,21 @@ yay -S interception-tools interception-caps2esc
 sudo cp ./udevmon/.udevmon.yaml /etc/interception/udevmon.d/udevmon.yaml
 sudo systemctl enable --now udevmon
 ```
+
+### MacOS BS
+
+#### Make `Home` and `End` work:
+
+```
+$ mkdir -p ~/Library/KeyBindings/
+$ vim ~/Library/KeyBindings/DefaultKeyBinding.dict
+
+add the following:
+
+{
+    "\UF729"  = moveToBeginningOfLine:; // home
+    "\UF72B"  = moveToEndOfLine:; // end
+    "$\UF729" = moveToBeginningOfLineAndModifySelection:; // shift-home
+    "$\UF72B" = moveToEndOfLineAndModifySelection:; // shift-end
+}
+```
