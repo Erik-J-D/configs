@@ -1,6 +1,7 @@
 ack
 alsa-tools
 alsa-utils
+arandr
 ardour
 autoconf
 automake
@@ -19,6 +20,7 @@ docker
 docker-compose
 dunst
 efibootmgr
+emacs
 eog
 exa
 fakeroot
@@ -57,7 +59,7 @@ kxstudio-lv2-extensions
 libreoffice-fresh
 libtool
 lightdm
-lightdm-gtk-greeter
+lightdm-webkit-theme-litarvan
 lightdm-webkit2-greeter
 linux
 linux-firmware
@@ -65,6 +67,8 @@ lvm2
 lynx
 make
 man-db
+mesa-utils
+nano
 neovim
 network-manager-applet
 nmap
@@ -97,6 +101,7 @@ qpdf
 quiterss
 racket
 reflector
+ripgrep
 rofi
 rsync
 scrot
@@ -127,6 +132,7 @@ which
 xarchiver
 xclip
 xdg-user-dirs
+xf86-video-intel
 xf86-video-vesa
 xjadeo
 xorg-fonts-100dpi

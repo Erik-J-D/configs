@@ -35,10 +35,10 @@ zstyle ':vcs_info:git:*' formats '(%b)'  # format for vcs branch
 # Generate a new 'PROMPT' before drawing PROMPT
 precmd() {
     vcs_info
-    PROMPT="%(?.${B_GREEN}✓.${B_RED}✗)${B_BLUE} %n@%m ${B_GREEN}%~ ${B_YELLOW}${vcs_info_msg_0_} ${B_MAGENTA}"$'\n'"$ ${RESET}"
+    PROMPT="%(?.${B_GREEN}✓.${B_RED}✗)${B_BLUE} %~ ${B_YELLOW}${vcs_info_msg_0_} ${B_MAGENTA}"$'\n'"$ ${RESET}"
 }
 
-WORDCHARS=${WORDCHARS/\/}  # split paths on / for definition of a word
+WORDCHARS="*?[]~=&;!#$%^(){}<>"
 
 # explicitly set key bindings - home, end, del, etc didn't work ootb
 typeset -g -A key
@@ -77,9 +77,9 @@ bindkey "^[[1;5D" backward-word
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+    autoload -Uz add-zle-hook-widget
+    function zle_application_mode_start { echoti smkx }
+    function zle_application_mode_stop { echoti rmkx }
+    add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+    add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
