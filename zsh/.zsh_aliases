@@ -47,4 +47,4 @@ alias nvim='nvim -p'
 alias gd='git diff'
 alias gits='git status'
 # weather
-alias weather="clear; printf %b '\e]11;#778\a'; curl wttr.in"
+alias weather="curl wttr.in/\?T"
