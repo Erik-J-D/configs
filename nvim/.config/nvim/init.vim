@@ -11,9 +11,10 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 call plug#begin('~/.nvim/bundle')
-  Plug 'Olical/conjure', {'tag': 'v4.24.0'}
+  Plug 'Olical/conjure'
   Plug 'ap/vim-css-color'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'guns/vim-sexp'
   Plug 'itchyny/lightline.vim'
   Plug 'kien/rainbow_parentheses.vim'
   Plug 'morhetz/gruvbox'
@@ -122,6 +123,14 @@ nmap <F9> <esc>:tabe<cr>
 
 com! FormatJSON %!python3 -m json.tool
 com! FormatXML %!xmllint --format
+
+" raco fmt on saving racket files
+function! Racofmt()
+  let l:save = winsaveview()
+  %!raco fmt --width 80
+  call winrestview(l:save)
+endfun
+autocmd BufWritePre *.rkt :call Racofmt()
 
 " Remove all trailing whitespace on save
 function! <SID>StripTrailingWhitespaces()

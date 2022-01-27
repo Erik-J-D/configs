@@ -31,7 +31,9 @@ findutils
 firefox
 flake8
 flex
+font-manager
 freecad
+fwupd
 gawk
 gcc
 gdb
