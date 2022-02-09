@@ -22,6 +22,8 @@ $ raco pkg install racket-langserver
 $ npm i -g vscode-langservers-extracted  # html and css
 
 $ rustup component add rls rust-analysis rust-src
+
+$ npm install -g vim-language-server
 ```
 
 ### caps -> ctrl
