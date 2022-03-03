@@ -15,6 +15,7 @@ call plug#begin('~/.nvim/bundle')
   Plug 'ap/vim-css-color'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'guns/vim-sexp'
+  Plug 'hashivim/vim-terraform'
   Plug 'itchyny/lightline.vim'
   Plug 'kien/rainbow_parentheses.vim'
   Plug 'morhetz/gruvbox'
@@ -25,6 +26,7 @@ call plug#begin('~/.nvim/bundle')
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
   Plug 'wlangstroth/vim-racket'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 call plug#end()
 
 nnoremap <C-o> :NERDTreeToggle<CR>
@@ -134,6 +136,10 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre,FileWritePre,FileAppendPre,FilterWritePre * :call <SID>StripTrailingWhitespaces()
 
+" Prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
 " Rainbow parens
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -156,7 +162,7 @@ let g:lightline = {
       \ },
       \ }
 
-autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.py,*.go,*.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
