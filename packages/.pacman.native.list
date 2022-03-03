@@ -42,7 +42,9 @@ gettext
 gimp
 git
 go
+gparted
 grep
+guitarix
 gzip
 helm-synth
 hexchat
@@ -61,7 +63,6 @@ kxstudio-lv2-extensions
 libreoffice-fresh
 libtool
 lightdm
-lightdm-webkit-theme-litarvan
 lightdm-webkit2-greeter
 linux
 linux-firmware
@@ -71,6 +72,7 @@ make
 man-db
 mesa-utils
 nano
+nemo
 neovim
 network-manager-applet
 nmap
@@ -85,7 +87,6 @@ pacman
 pacman-contrib
 patch
 pavucontrol
-pcmanfm-gtk3
 pcsx2
 pdfgrep
 picom
@@ -146,6 +147,7 @@ xorg-server-devel
 xorg-server-xephyr
 xorg-xauth
 xorg-xbacklight
+xorg-xdpyinfo
 xorg-xhost
 xorg-xprop
 xorg-xrandr
