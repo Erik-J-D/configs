@@ -36,6 +36,12 @@ sudo cp ./udevmon/.udevmon.yaml /etc/interception/udevmon.d/udevmon.yaml
 sudo systemctl enable --now udevmon
 ```
 
+### M2 stereo -> Mono
+
+```
+pacmd load-module module-remap-source  master=alsa_input.usb-MOTU_M2_M2AE2213VI-00.analog-stereo channels=1 master_channel_map=front-left channel_map=mono
+```
+
 ### MacOS BS
 
 #### Make `Home` and `End` work:
