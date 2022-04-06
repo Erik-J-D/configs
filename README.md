@@ -36,10 +36,17 @@ sudo cp ./udevmon/.udevmon.yaml /etc/interception/udevmon.d/udevmon.yaml
 sudo systemctl enable --now udevmon
 ```
 
-### M2 stereo -> Mono
+### Audio interface stereo -> Mono
+
+Get the name of the the device with
+```
+$ pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'
+```
+Add the following to `/etc/pulse/default.pa`, swapping out the name after `master` for what you got:
 
 ```
-pacmd load-module module-remap-source  master=alsa_input.usb-MOTU_M2_M2AE2213VI-00.analog-stereo channels=1 master_channel_map=front-left channel_map=mono
+load-module module-remap-source master=alsa_input.usb-Avid_Fast_Track_Solo_0217127E000C2400-00.analog-stereo channels=1 master_channel_map=front-left channel_map=mono source_properties="device.description='Avid Mic'"
+load-module module-remap-source master=alsa_input.usb-Avid_Fast_Track_Solo_0217127E000C2400-00.analog-stereo channels=1 master_channel_map=front-right channel_map=mono source_properties="device.description='Avid Instrument'"
 ```
 
 ### MacOS BS
