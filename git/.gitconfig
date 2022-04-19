@@ -1,12 +1,16 @@
 [user]
 	email = erik@erik-j.de
 	name = Erik Derohanian
+
 [color]
 	ui = true
+
 [core]
 	editor = nvim
+
 [push]
 	default = simple
+
 [alias]
 	bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|development|production)' | xargs git branch -d ; }; f"
 	all = "!f() { ls -d */ | xargs -I{} git -C {} $1; }; f"
@@ -14,14 +18,18 @@
 	lastcommit = show --name-status HEAD
 	undolastcommit = reset HEAD~1 --hard
 	tree = log --graph --oneline --all --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen%cr%Creset %Cblue%an%Creset %gn'
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [pull]
 	rebase = true
+
 [init]
 	defaultBranch = main
+
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
