@@ -1,27 +1,27 @@
 [user]
-    email = erik@erik-j.de
-    name = Erik Derohanian
+	email = erik@erik-j.de
+	name = Erik Derohanian
 [color]
-    ui = true
+	ui = true
 [core]
-    editor = nvim
+	editor = nvim
 [push]
-    default = simple
+	default = simple
 [alias]
-    bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|development|production)' | xargs git branch -d ; }; f"
-    all = "!f() { ls -d */ | xargs -I{} git -C {} $1; }; f"
-    listlarge = "!f() { git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' | awk '$2 >= 2^20' | sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest; }; f"
-    lastcommit = show --name-status HEAD
-    undolastcommit = reset HEAD~1 --hard
-    tree = log --graph --oneline --all --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen%cr%Creset %Cblue%an%Creset %gn'
+	bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|development|production)' | xargs git branch -d ; }; f"
+	all = "!f() { ls -d */ | xargs -I{} git -C {} $1; }; f"
+	listlarge = "!f() { git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' | awk '$2 >= 2^20' | sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest; }; f"
+	lastcommit = show --name-status HEAD
+	undolastcommit = reset HEAD~1 --hard
+	tree = log --graph --oneline --all --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen%cr%Creset %Cblue%an%Creset %gn'
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [pull]
-    rebase = false
+	rebase = true
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
