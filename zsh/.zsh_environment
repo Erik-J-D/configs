@@ -2,6 +2,9 @@ autoload -Uz compinit && compinit
 autoload colors && colors
 autoload -Uz vcs_info
 
+# PATH
+export PATH="$HOME/.scripts/:$PATH"
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
