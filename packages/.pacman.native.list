@@ -18,6 +18,7 @@ cups
 cups-pdf
 dhcpcd
 discord
+dmidecode
 docker
 docker-compose
 dunst
@@ -52,6 +53,7 @@ helm-synth
 hexchat
 htop
 hugo
+i2c-tools
 i3-gaps
 i3blocks
 i3status
@@ -102,6 +104,7 @@ pulseaudio-jack
 python
 python-black
 python-pip
+python-poetry
 python-rdflib
 qbittorrent
 qpdf
