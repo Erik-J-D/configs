@@ -63,6 +63,7 @@ interception-caps2esc
 jack2
 keepassxc
 kitty
+krita
 kxstudio-lv2-extensions
 libreoffice-fresh
 libtool
@@ -117,6 +118,7 @@ rsync
 ruby
 scrot
 sed
+signal-desktop
 simple-scan
 sqlitebrowser
 squashfs-tools
