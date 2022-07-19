@@ -2,6 +2,8 @@
 case "$OSTYPE" in
   darwin*)
     # Mac stuff here
+    alias o='open'
+
   ;;
   linux*)
     # Linux stuff here
@@ -22,6 +24,7 @@ case "$OSTYPE" in
 esac
 
 alias :q='exit'
+alias :wq='exit'
 
 alias sl='ls'
 alias ls='exa -F --group-directories-first'
@@ -46,5 +49,11 @@ alias nvim='nvim -p'
 # git
 alias gd='git diff'
 alias gits='git status'
+
 # weather
 alias weather="curl wttr.in/\?T"
+
+# docker
+alias dcu="docker-compose up"
+alias dcd="docker-compose down"
+alias docker_nuke="docker system prune -a --volumes -f"

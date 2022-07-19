@@ -12,13 +12,16 @@
     default = simple
 
 [alias]
-    bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|development|production)' | xargs git branch -d ; }; f"
     all = "!f() { ls -d */ | xargs -I{} git -C {} $1; }; f"
-    listlarge = "!f() { git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' | awk '$2 >= 2^20' | sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest; }; f"
+    bclean = "!f() { git fetch -p ; git branch --merged | egrep -v '(^\\*|master|development|production|main)' | xargs git branch -d ; }; f"
+    c = commit
+    co = checkout
+    deleted = log --diff-filter=D --summary .
     lastcommit = show --name-status HEAD
-    undolastcommit = reset HEAD~1 --hard
-    tree = log --graph --oneline --all --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen%cr%Creset %Cblue%an%Creset %gn'
     lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+    listlarge = "!f() { git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' | awk '$2 >= 2^20' | sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest; }; f"
+    tree = log --graph --oneline --all --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen%cr%Creset %Cblue%an%Creset %gn'
+    undolastcommit = reset HEAD~1 --hard
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
