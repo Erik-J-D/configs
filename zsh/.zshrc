@@ -6,6 +6,4 @@
 . ~/.zsh_environment
 
 # Per computer extra settings
-if [ -f ~/.zsh_$HOST ]; then
-    . ~/.zsh_$HOST
-fi
+test -e "${HOME}/.zsh_${HOST}" && source "${HOME}/.zsh_${HOST}"

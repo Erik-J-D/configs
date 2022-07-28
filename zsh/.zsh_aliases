@@ -30,7 +30,7 @@ alias sl='ls'
 alias ls='exa -F --group-directories-first'
 alias ll='exa -laF --git --group-directories-first'
 alias la='exa -aF --group-directories-first'
-alias tree='exa --tree -F'
+alias tree='exa --tree -F --long'
 
 alias pserv='python3 -m http.server'
 
