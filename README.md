@@ -1,3 +1,7 @@
+# Moved To Codeberg
+
+Find it [here](https://codeberg.org/erik-j-d/configs)
+
 # configs
 
 ## Installation
